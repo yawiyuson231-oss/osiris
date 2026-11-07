@@ -1,5 +1,5 @@
 /**
- * OSIRIS OI Assist: the Recon panel's lookups, for OI.
+ * MUSASHI X OI Assist: the Recon panel's lookups, for OI.
  *
  * The Recon panel runs one OSINT lookup per tool against the site's own API
  * routes (and one public one). This names those tools for the model, builds

@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI: the timeline view.
+ * MUSASHI X OI: the timeline view.
  *
  * The simulation over dated time: above, the worlds pooled period by period
  * with their range, the base rate (or today's value), injected events and the

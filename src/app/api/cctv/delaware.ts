@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { cachedSource } from '@/lib/sourceCache';
 
 /**
- * OSIRIS — Delaware traffic cameras (DelDOT Transportation Management Center)
+ * MUSASHI X — Delaware traffic cameras (DelDOT Transportation Management Center)
  * Source: https://deldot.gov/map/ — the state's own traffic map.
  * ~360 live HLS streams across New Castle, Kent and Sussex — NO API KEY NEEDED.
  *
@@ -106,7 +106,7 @@ async function loadDelawareCameras(): Promise<CctvCamera[]> {
   if (!res.ok) throw new Error(`DelDOT videocamera.json HTTP ${res.status}`);
 
   const cams = parseDelaware(await res.json());
-  console.log(`[OSIRIS] Delaware cameras — DelDOT: ${cams.length}`);
+  console.log(`[MUSASHI X] Delaware cameras — DelDOT: ${cams.length}`);
   return cams;
 }
 

@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { cachedSource } from '@/lib/sourceCache';
 
 /**
- * OSIRIS — South Carolina traffic cameras (SCDOT 511)
+ * MUSASHI X — South Carolina traffic cameras (SCDOT 511)
  * Source: https://www.511sc.org — the state's own 511 map.
  * ~800 live HLS streams statewide — NO API KEY NEEDED.
  *
@@ -113,7 +113,7 @@ async function loadSouthCarolinaCameras(): Promise<CctvCamera[]> {
   if (!res.ok) throw new Error(`SCDOT 511 cameras layer HTTP ${res.status}`);
 
   const cams = parseSouthCarolina(await res.json());
-  console.log(`[OSIRIS] South Carolina cameras — SCDOT 511: ${cams.length}`);
+  console.log(`[MUSASHI X] South Carolina cameras — SCDOT 511: ${cams.length}`);
   return cams;
 }
 

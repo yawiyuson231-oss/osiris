@@ -2,7 +2,7 @@ import { cachedSource } from '@/lib/sourceCache';
 import { loadIbi511Cameras, type Ibi511Source } from './ibi511';
 
 /**
- * OSIRIS — Alberta CCTV Cameras (511 Alberta)
+ * MUSASHI X — Alberta CCTV Cameras (511 Alberta)
  * Source: https://511.alberta.ca — the same IBI 511 stack Florida and Arizona run
  * ~340 cameras province-wide — NO API KEY NEEDED.
  *

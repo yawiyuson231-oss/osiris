@@ -1,5 +1,5 @@
 /**
- * OSIRIS — Live transit, server side: reads operators' vehicle feeds on demand.
+ * MUSASHI X — Live transit, server side: reads operators' vehicle feeds on demand.
  *
  * A feed is read only when someone is looking at the area it covers, and each
  * read is shared by every visitor for FEED_TTL_MS, so however many people
@@ -35,7 +35,7 @@ export const MAX_VEHICLES = 25_000;
 /** A position this far outside its feed's area is a broken GPS fix, not a bus abroad. */
 const AREA_SLACK_DEG = 1;
 
-const UA = 'OSIRIS-Transit/1.0 (+https://osirisai.live)';
+const UA = 'MUSASHI X-Transit/1.0 (+https://musashi-x.app)';
 
 interface Entry {
   at: number;

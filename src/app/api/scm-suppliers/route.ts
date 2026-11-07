@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 /**
- * OSIRIS — SCM Supplier Risk Overlay
+ * MUSASHI X — SCM Supplier Risk Overlay
  * Calculates intersection between live global threats (earthquakes, fires,
  * disaster alerts, reported conflict) and static Tier 1/2 supplier coordinates.
  *
@@ -128,7 +128,7 @@ export async function GET() {
     });
   } else failed.push('conflict');
 
-  if (failed.length) console.warn('[OSIRIS] SCM risk: signals unavailable:', failed.join(', '));
+  if (failed.length) console.warn('[MUSASHI X] SCM risk: signals unavailable:', failed.join(', '));
 
   return NextResponse.json({
     suppliers: dynamicSuppliers,

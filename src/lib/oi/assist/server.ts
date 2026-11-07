@@ -1,5 +1,5 @@
 /**
- * OSIRIS OI Assist: the server's half of a step.
+ * MUSASHI X OI Assist: the server's half of a step.
  *
  * The page sends the conversation and what is on screen; this checks both,
  * puts them to the reader's model on the reader's key, and returns the step

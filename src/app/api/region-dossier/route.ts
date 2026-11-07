@@ -5,7 +5,7 @@ import { serverPlaces } from '@/lib/places-server';
 import { cachedSource } from '@/lib/sourceCache';
 
 /**
- * OSIRIS — Region Dossier API
+ * MUSASHI X — Region Dossier API
  * Provides country intelligence for any coordinate (double right-click on map)
  * Fix #115: Steps 2-4 now run in parallel via Promise.allSettled
  */
@@ -191,7 +191,7 @@ export async function GET(request: Request) {
               thumbnail: wiki.thumbnail?.source,
             };
           }
-        } catch (e) { console.warn('[OSIRIS] Wikipedia fetch error:', e instanceof Error ? e.message : e); }
+        } catch (e) { console.warn('[MUSASHI X] Wikipedia fetch error:', e instanceof Error ? e.message : e); }
         return null;
       })(),
 

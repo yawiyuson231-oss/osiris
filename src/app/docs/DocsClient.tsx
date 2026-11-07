@@ -23,7 +23,7 @@ const API_SECTIONS = [
 ];
 
 const ALL_SECTIONS = [...GUIDE_SECTIONS, ...API_SECTIONS];
-const FALLBACK_ORIGIN = 'https://osirisai.live';
+const FALLBACK_ORIGIN = 'https://musashi-x.app';
 
 export default function DocsClient() {
   const [active, setActive] = useState('overview');
@@ -153,7 +153,7 @@ export default function DocsClient() {
             </svg>
             <span className="flex flex-col leading-none">
               <span className="text-[12px] font-bold tracking-[0.3em] text-[var(--gold-primary)] font-mono">
-                OSIRIS
+                MUSASHI X
               </span>
               <span className="text-[9px] font-mono tracking-[0.22em] text-[var(--text-muted)] uppercase mt-[3px]">
                 Docs
@@ -180,7 +180,7 @@ export default function DocsClient() {
           </button>
 
           <a
-            href="https://github.com/simplifaisoul/osiris"
+            href="https://github.com/musashi-x/musashi-x"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub repository"
@@ -269,12 +269,12 @@ export default function DocsClient() {
               <span className="text-[var(--text-heading)]">Build on the</span>
               <br />
               <span className="bg-gradient-to-r from-[var(--gold-primary)] via-[#F0D060] to-[var(--cyan-primary)] bg-clip-text text-transparent">
-                OSIRIS platform
+                MUSASHI X platform
               </span>
             </h1>
 
             <p className="text-[15px] leading-[1.75] text-[var(--text-secondary)] max-w-[42rem]">
-              OSIRIS aggregates aviation, maritime, seismic, conflict, cyber, and OSINT feeds onto a single
+              MUSASHI X aggregates aviation, maritime, seismic, conflict, cyber, and OSINT feeds onto a single
               GPU-rendered map — and exposes every one of them as a plain HTTP endpoint. This is the same API the
               dashboard runs on. There is no separate, privileged internal tier.
             </p>
@@ -374,9 +374,9 @@ print(len(data["commercial_flights"]), "commercial")`,
           </Section>
 
           <Section id="self-hosting" eyebrow="Guide" title="Self-Hosting">
-            <p>OSIRIS needs Node 20+ and no database. A local instance is three commands:</p>
-            <Pre label="Local development" lang="bash">{`git clone https://github.com/simplifaisoul/osiris.git
-cd osiris
+            <p>MUSASHI X needs Node 20+ and no database. A local instance is three commands:</p>
+            <Pre label="Local development" lang="bash">{`git clone https://github.com/musashi-x/musashi-x.git
+cd musashi-x
 npm install
 npm run dev        # http://localhost:3000`}</Pre>
             <p>For a production build, or to run the checks:</p>
@@ -386,7 +386,7 @@ npm test           # vitest
 npm run test:live  # includes tests that hit live upstream feeds`}</Pre>
             <p>
               A <Code>Dockerfile</Code> and <Code>docker-compose.yml</Code> ship with the repository. The container
-              always listens on port 3000 internally; <Code>OSIRIS_PORT</Code> controls the host port it is published
+              always listens on port 3000 internally; <Code>MUSASHI_PORT</Code> controls the host port it is published
               on.
             </p>
             <Pre label="Docker" lang="bash">{`cp .env.example .env
@@ -405,18 +405,18 @@ docker compose up -d`}</Pre>
               {[
                 {
                   k: 'SCANNER_URL / SCANNER_KEY',
-                  v: 'Points at the separate RECON scanner backend. SCANNER_KEY must equal that backend’s OSIRIS_KEY. Leave both empty to disable RECON — /api/scanner then returns 503 by design.',
+                  v: 'Points at the separate RECON scanner backend. SCANNER_KEY must equal that backend’s MUSASHI_KEY. Leave both empty to disable RECON — /api/scanner then returns 503 by design.',
                 },
                 {
                   k: 'SDK_INGEST_KEY',
                   v: 'Shared secret for /api/sdk/ingest. The endpoint fails closed: while this is unset, ingestion is disabled and returns 503.',
                 },
                 {
-                  k: 'OSIRIS_TELEGRAM_CHANNELS',
+                  k: 'MUSASHI_TELEGRAM_CHANNELS',
                   v: 'Comma-separated public Telegram channel names (no @) for the Telegram OSINT layer, overriding the curated default set.',
                 },
                 {
-                  k: 'OSIRIS_PORT',
+                  k: 'MUSASHI_PORT',
                   v: 'Host port the UI is published on. The container itself always listens on 3000.',
                 },
               ].map(row => (
@@ -488,7 +488,7 @@ docker compose up -d`}</Pre>
 
           <Section id="oi" eyebrow="Guide" title="OI & MCP">
             <p>
-              OI is the AI in OSIRIS, on your own model key, and it works two ways. <strong>Assist</strong> is a
+              OI is the AI in MUSASHI X, on your own model key, and it works two ways. <strong>Assist</strong> is a
               conversation (press <kbd>O</kbd>): ask in words, typed or spoken, and OI works the map for you. It flies
               to the place you name, switches the layers on, searches what is live (flights, military aircraft, ships,
               ports and chokepoints, earthquakes, fires, weather, disaster alerts, news, cameras, satellites), marks
@@ -497,7 +497,7 @@ docker compose up -d`}</Pre>
               Research or Forecast to steer it, or leave it on Auto.
             </p>
             <p>
-              <strong>Forecast</strong> is OSIRIS&apos;s prediction engine. Ask it a question and it researches it, builds a
+              <strong>Forecast</strong> is MUSASHI X&apos;s prediction engine. Ask it a question and it researches it, builds a
               world model (the actors, where they are, how they relate), and casts the actors who decide the outcome as
               agents, each with what it wants, the levers it can pull and its red lines. Then it plays them against each
               other over simulated time, in dated periods from today to the question&apos;s horizon, in several parallel
@@ -518,7 +518,7 @@ docker compose up -d`}</Pre>
                 { k: 'Steering', v: 'Whoever started a run holds its token: they alone can inject events into it or stop it. Anyone with a key can question the actors and the report agent.' },
                 { k: 'On the globe', v: 'Violet arcs are alignments and cooperation, magenta are rivalries and pressure, indigo is everything in between; evidence from the feeds is a paler wash of its tone, and each move is an arc from the actor that made it to the actor it was aimed at. All three colours are yours to set in the Style Studio (Map layers → OI).' },
                 { k: 'Workspace', v: 'Full screen (the expand button, with or without a forecast) opens the OI workspace. On the left, the same Forecast / Assist switch as the panel: the ask form, then the prediction with the report or the execution trace (every step the engine took, timed, with what it produced); or the conversation. In the middle, four views on keys 1 to 4: the live globe; the research graph, after MiroFish, with every actor and cited source and every relation, move and quote between them, filters and a flow layout; the timeline, each simulated world period by period with its events, under the worlds pooled; and sortable tables of actors, moves, events, sources and links. On the right, once there is a run, whatever is selected, as an object with its properties and links. Ctrl+K (⌘K) finds any object by name, and in Assist OI can open the workspace, switch its view and open objects for you.' },
-                { k: 'Research', v: 'Before the world model, OI researches the question from sources that can be checked: the reporting (a newsroom of publishers’ own feeds by desk, Yahoo Finance’s newswire for any ticker in play, GDELT and Wikipedia’s Current events, each story with its link and, where the publisher serves it, what the article says; social networks are left out), two years of daily prices for any market price the question turns on, what Polymarket and Manifold price the same question at, Wikipedia background, and the OSIRIS feeds where they are on topic. The actors are the real ones the question turns on (governments, leaders, companies, groups), each played from its own interests; a market is the world they move, never a player.' },
+                { k: 'Research', v: 'Before the world model, OI researches the question from sources that can be checked: the reporting (a newsroom of publishers’ own feeds by desk, Yahoo Finance’s newswire for any ticker in play, GDELT and Wikipedia’s Current events, each story with its link and, where the publisher serves it, what the article says; social networks are left out), two years of daily prices for any market price the question turns on, what Polymarket and Manifold price the same question at, Wikipedia background, and the MUSASHI X feeds where they are on topic. The actors are the real ones the question turns on (governments, leaders, companies, groups), each played from its own interests; a market is the world they move, never a player.' },
                 { k: 'Prices', v: 'A question about a price (a coin, a share, an index, a commodity, a currency) is priced. The instrument’s own daily moves, average trend removed, are resampled into 4,000 paths to the horizon: the statistical baseline. Each simulated world gets its own course for the price, spread across what can happen; the period’s events push it; and the price settles the question in that world. The worlds’ events are then run through the market’s own paths, so three worlds read as a probability, not a tally of three outcomes.' },
                 { k: 'What it rests on', v: 'Every prediction is shown beside what can be checked, on one scale: the statistical baseline, the prediction market on the same question (real money, many traders), the simulation priced, how the worlds ended, and the prediction itself, each a click from its source. The report agent is told to move off a liquid market or the baseline only for reasons it can name.' },
                 { k: 'Every level', v: 'When a prediction market prices the question as a ladder (reach $160, $180, $200…, dip to $90, $60… by the same date), OI reads the whole ladder and sets it beside its own curve, the chance of trading at every level, rung by rung: where the model sees more upside or downside than the crowd, and where they part most.' },
@@ -559,8 +559,8 @@ curl -N ${origin}/api/oi/runs/RUN_ID/events`,
             <p>
               The same engine is an MCP server at <Code>{`${origin}/api/mcp`}</Code> (Streamable HTTP). Give an agent the
               tools <Code>oi_predict</Code>, <Code>oi_get_run</Code>, <Code>oi_ask</Code>,{' '}
-              <Code>oi_inject</Code> and <Code>oi_cancel</Code>, plus <Code>osiris_world_brief</Code> and{' '}
-              <Code>osiris_markets</Code> and <Code>osiris_trending</Code>, which are free and need no key. The model key is set once on the connection, as
+              <Code>oi_inject</Code> and <Code>oi_cancel</Code>, plus <Code>musashi_world_brief</Code> and{' '}
+              <Code>musashi_markets</Code> and <Code>musashi_trending</Code>, which are free and need no key. The model key is set once on the connection, as
               headers, so it never appears in the agent&apos;s conversation.
             </p>
             <CodeBlock
@@ -571,7 +571,7 @@ curl -N ${origin}/api/oi/runs/RUN_ID/events`,
                   lang: 'yaml',
                   code: `# ~/.hermes/config.yaml
 mcp_servers:
-  osiris:
+  musashi:
     url: "${origin}/api/mcp"
     headers:
       X-OI-Provider: "anthropic"
@@ -582,7 +582,7 @@ mcp_servers:
                 {
                   label: 'Claude Code',
                   lang: 'bash',
-                  code: `claude mcp add --transport http osiris ${origin}/api/mcp \\
+                  code: `claude mcp add --transport http musashi ${origin}/api/mcp \\
   --header "X-OI-Provider: openai" \\
   --header "X-OI-Key: $OPENAI_API_KEY"`,
                 },
@@ -591,7 +591,7 @@ mcp_servers:
                   lang: 'json',
                   code: `{
   "mcpServers": {
-    "osiris": {
+    "musashi": {
       "url": "${origin}/api/mcp",
       "headers": {
         "X-OI-Provider": "google",
@@ -613,7 +613,7 @@ mcp_servers:
               The method follows{' '}
               <a href="https://github.com/666ghj/MiroFish" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">MiroFish</a>,
               the open-source swarm-intelligence engine: seed a parallel world from real material, populate it with agents,
-              let them interact while you inject variables, then hand the simulation to a report agent. OSIRIS rebuilds that
+              let them interact while you inject variables, then hand the simulation to a report agent. MUSASHI X rebuilds that
               method natively for its own feeds and globe; no MiroFish code is used. A simulation, not a guarantee.
             </p>
           </Section>
@@ -730,10 +730,10 @@ mcp_servers:
           {/* Footer */}
           <footer className="border-t border-white/[0.06] pt-6 pb-16 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-mono text-[var(--text-muted)]">
             {[
-              { href: 'https://github.com/simplifaisoul/osiris', label: 'GitHub' },
-              { href: 'https://discord.gg/EPaFD5FFKf', label: 'Discord' },
-              { href: 'https://x.com/soulsimplifai', label: 'X' },
-              { href: 'https://github.com/simplifaisoul/osiris/issues', label: 'Report an issue' },
+              { href: 'https://github.com/musashi-x/musashi-x', label: 'GitHub' },
+              { href: 'https://#', label: 'Discord' },
+              { href: '#', label: 'X' },
+              { href: 'https://github.com/musashi-x/musashi-x/issues', label: 'Report an issue' },
             ].map(l => (
               <a
                 key={l.label}

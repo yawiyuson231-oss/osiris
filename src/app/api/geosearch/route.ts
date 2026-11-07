@@ -5,16 +5,16 @@ import { biasOf, normalizeFeature, type GeoResult, type GeocoderFeature } from '
 export const maxDuration = 20;
 
 /**
- * OSIRIS — place search through the OSIRIS geocoder.
+ * MUSASHI X — place search through the MUSASHI X geocoder.
  *
- * When OSIRIS_GEOCODER_URL is set, the browser's search asks this route, and
+ * When MUSASHI_GEOCODER_URL is set, the browser's search asks this route, and
  * this route asks that geocoder through lib/geocoder.ts, which caches answers
  * and keeps bursts off it. `lat`/`lng` bias the answer toward where the map
  * is looking; the browser rounds them (see biasOf) so the edge can share
  * answers.
  *
- * Without OSIRIS_GEOCODER_URL, this route asks the shared search of the
- * deployment that runs osirisai.live (/api/geosearch/shared, through
+ * Without MUSASHI_GEOCODER_URL, this route asks the shared search of the
+ * deployment that runs musashi-x.app (/api/geosearch/shared, through
  * lib/geocoder.ts), so a copy on someone's own machine searches the same
  * geocoder with nothing to set up. SHARED_SEARCH_URL points it elsewhere, or
  * `off` turns it off.

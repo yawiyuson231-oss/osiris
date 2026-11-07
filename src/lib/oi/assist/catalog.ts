@@ -1,5 +1,5 @@
 /**
- * OSIRIS OI Assist: what the assistant can see and switch on.
+ * MUSASHI X OI Assist: what the assistant can see and switch on.
  *
  * The page keeps its live data in one bag (flights, ships, quakes, news and
  * the rest, each under its own key). This module names the parts the

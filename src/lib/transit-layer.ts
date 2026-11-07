@@ -1,5 +1,5 @@
 /**
- * OSIRIS — Live transit on the map.
+ * MUSASHI X — Live transit on the map.
  *
  * Attached while the Live Buses & Transit layer is on, and it owns everything
  * it draws, the way the traffic layer does:
@@ -335,7 +335,7 @@ export function attachTransit(map: MlMap, opts: TransitLayerOptions): () => void
       }
     } catch (err) {
       if (ctrl.signal.aborted || disposed) return;
-      console.warn('[OSIRIS] Transit unavailable:', err);
+      console.warn('[MUSASHI X] Transit unavailable:', err);
       report('error', 'Transit feeds unavailable');
     }
   };
@@ -373,7 +373,7 @@ export function attachTransit(map: MlMap, opts: TransitLayerOptions): () => void
     }
     return best;
   };
-  /** Another OSIRIS layer's feature under the point wins the click; the basemap does not. */
+  /** Another MUSASHI X layer's feature under the point wins the click; the basemap does not. */
   /** Ahead of the vehicle when there is room there, so its trail is not under its own card. */
   const anchorFor = (track: Track, sample: Sample): PositionAnchor | undefined => {
     const from = trailOf(track, sample).find(([lng, lat]) => metresBetween({ lng, lat }, sample) >= 20);

@@ -12,7 +12,7 @@ import { loadRecent, rememberPlace, type RecentPlace } from '@/lib/recent-places
 import { PlaceRow } from './places';
 
 /* ═══════════════════════════════════════════════════════════════
-   OSIRIS — Directions
+   MUSASHI X — Directions
    Turn-by-turn routing over /api/directions (Valhalla + OSRM): a start, any
    stops and a destination on one rail; the fastest route and its
    alternatives, each with the road it takes; the steps; and a hand-off to
@@ -566,7 +566,7 @@ export default function DirectionsBar({ onRoute, onLocate, onClose, center = nul
    * Fill the origin with wherever the operator is.
    *
    * Tries the browser first (precise, but needs permission and a secure
-   * context), then falls back to OSIRIS's existing IP geolocation, which needs
+   * context), then falls back to MUSASHI X's existing IP geolocation, which needs
    * neither — so this still does something useful when permission is denied.
    */
   const useMyLocation = useCallback(async () => {

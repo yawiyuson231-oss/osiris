@@ -28,7 +28,7 @@ import LidarPanel from '@/components/lidar/LidarPanel';
 import { useLidar, setTab } from '@/lib/lidar/store';
 
 /* ═══════════════════════════════════════════════════════════════
-   ArcGIS Search & Import Panel — OSIRIS OSINT Dashboard
+   ArcGIS Search & Import Panel — MUSASHI X OSINT Dashboard
    Premium dark-ops glassmorphism aesthetic
    ═══════════════════════════════════════════════════════════════ */
 

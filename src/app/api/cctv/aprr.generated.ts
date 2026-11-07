@@ -1,7 +1,7 @@
 import type { CctvCamera } from './types';
 
 /**
- * OSIRIS — APRR / AREA motorway webcams (GENERATED).
+ * MUSASHI X — APRR / AREA motorway webcams (GENERATED).
  *
  * Written by tools/generate-aprr-catalogue.mjs from voyage.aprr.fr — do not
  * edit by hand. Each stream_url is a Viewsurf redirect to that camera's newest

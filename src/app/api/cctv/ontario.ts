@@ -2,7 +2,7 @@ import { cachedSource } from '@/lib/sourceCache';
 import { loadIbi511Cameras, type Ibi511Source } from './ibi511';
 
 /**
- * OSIRIS — Ontario CCTV Cameras (MTO / 511on.ca)
+ * MUSASHI X — Ontario CCTV Cameras (MTO / 511on.ca)
  * Source: https://511on.ca — the same IBI 511 stack Florida and Arizona run
  * ~925 cameras province-wide — NO API KEY NEEDED.
  *

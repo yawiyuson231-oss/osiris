@@ -1,5 +1,5 @@
 /**
- * OSIRIS vision: reading a whole frame, in passes.
+ * MUSASHI X vision: reading a whole frame, in passes.
  *
  * The model reads a 416-pixel square, so a 1280-pixel camera frame is shrunk
  * to a third before it is read, and a car up the road shrinks to a few pixels

@@ -24,7 +24,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error(`[OSIRIS] ${this.props.name || 'Component'} Error:`, error, errorInfo);
+    console.error(`[MUSASHI X] ${this.props.name || 'Component'} Error:`, error, errorInfo);
     // A chunk from an earlier deploy: only a reload onto the current build can recover.
     if (isChunkLoadError(error) && claimChunkReload()) window.location.reload();
   }

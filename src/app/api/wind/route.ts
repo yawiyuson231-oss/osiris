@@ -4,7 +4,7 @@ import { decodeGrib2, frameSource, gfsRuns, gfsUrl, toWindField, windTimes, type
 export const dynamic = 'force-dynamic';
 
 /**
- * OSIRIS — global surface wind for the Wind layer, through time.
+ * MUSASHI X — global surface wind for the Wind layer, through time.
  * Source: NOAA GFS via NOMADS — public, no key. A new run every six hours.
  *
  *   GET /api/wind              the newest run and the times its slider offers
@@ -100,7 +100,7 @@ export async function GET(request: NextRequest) {
   try {
     run = await newestRun();
   } catch (e) {
-    console.warn('[OSIRIS] wind:', e);
+    console.warn('[MUSASHI X] wind:', e);
     return NextResponse.json({ error: 'Wind data unavailable' }, { status: 502 });
   }
 
@@ -128,7 +128,7 @@ export async function GET(request: NextRequest) {
       headers: { 'Cache-Control': `public, max-age=${exact ? 86400 : 3600}` },
     });
   } catch (e) {
-    console.warn('[OSIRIS] wind:', e);
+    console.warn('[MUSASHI X] wind:', e);
     return NextResponse.json({ error: 'Wind data unavailable' }, { status: 502 });
   }
 }

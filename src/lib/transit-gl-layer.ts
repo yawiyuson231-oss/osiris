@@ -3,7 +3,7 @@ import { MercatorCoordinate } from 'maplibre-gl';
 import { createSatelliteProgramCache } from './satellite-programs';
 
 /**
- * OSIRIS — transit vehicles drawn on the GPU.
+ * MUSASHI X — transit vehicles drawn on the GPU.
  *
  * Playback moves every vehicle a little each frame. Feeding those positions
  * through a GeoJSON source means MapLibre re-tiles the data and lays out an
@@ -212,7 +212,7 @@ export function createTransitVehicleLayer(id: string): CustomLayerInterface & {
       if (!shader?.vertexShaderPrelude || !proj) return;
       let program: WebGLProgram;
       try { program = programs.get(shader, 'marker'); } catch (err) {
-        console.error('[OSIRIS] transit layer:', err instanceof Error ? err.message : err);
+        console.error('[MUSASHI X] transit layer:', err instanceof Error ? err.message : err);
         return;
       }
 

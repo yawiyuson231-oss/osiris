@@ -1,5 +1,5 @@
 /**
- * OSIRIS OI: the open web a forecast reads.
+ * MUSASHI X OI: the open web a forecast reads.
  *
  * Before the world model, OI researches the question the way an analyst
  * would, from sources that can be checked:
@@ -44,7 +44,7 @@ export interface WebDeps {
   gdeltGapMs: number;
 }
 
-const UA = 'Mozilla/5.0 (compatible; OSIRIS-OI/1.0; +https://osirisai.live/docs#oi)';
+const UA = 'Mozilla/5.0 (compatible; MUSASHI X-OI/1.0; +https://musashi-x.app/docs#oi)';
 
 /* ───────────────────────────── GDELT ───────────────────────────── */
 

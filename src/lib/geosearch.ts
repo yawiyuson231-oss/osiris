@@ -1,13 +1,13 @@
 /**
- * OSIRIS — place lookups, shared by the browser and /api/geosearch.
+ * MUSASHI X — place lookups, shared by the browser and /api/geosearch.
  *
  * Search, directions search and OI's place lookups show the built-in place
  * list's matches the moment a key is pressed, then ask one of two online
  * sources and merge what it finds in front of them:
  *
- *   • the OSIRIS geocoder, through /api/geosearch and lib/geocoder.ts: the
- *     deployment's own (OSIRIS_GEOCODER_URL) or, for a copy that runs none,
- *     the one osirisai.live shares. It searches OpenStreetMap data, with
+ *   • the MUSASHI X geocoder, through /api/geosearch and lib/geocoder.ts: the
+ *     deployment's own (MUSASHI_GEOCODER_URL) or, for a copy that runs none,
+ *     the one musashi-x.app shares. It searches OpenStreetMap data, with
  *     streets and addresses, biased toward where the map is looking;
  *   • when that cannot answer, Wikipedia and Wikidata, asked straight from the browser with
  *     no key. Wikipedia is typo tolerant and ranked by how much each place is
@@ -31,7 +31,7 @@ const WIKIPEDIA = 'https://en.wikipedia.org/w/api.php';
 const WIKIDATA = 'https://www.wikidata.org/w/api.php';
 
 /** Wikimedia asks browser code to say who is calling, in this header. */
-const API_USER_AGENT = 'OSIRIS place search (https://github.com/simplifaisoul/osiris)';
+const API_USER_AGENT = 'MUSASHI X place search (https://github.com/musashi-x/musashi-x)';
 
 /** Both answer type-ahead in well under a second; past this, the built-in list answers. */
 const TIMEOUT_MS = 4_000;
@@ -62,7 +62,7 @@ export interface PlaceName {
   label: string;
 }
 
-/** One Wikipedia page from a prefix search — only the fields OSIRIS reads. */
+/** One Wikipedia page from a prefix search — only the fields MUSASHI X reads. */
 export interface WikiPage {
   title?: string;
   index?: number;
@@ -71,7 +71,7 @@ export interface WikiPage {
   coordinates?: { lat?: number; lon?: number; type?: string; dim?: number }[];
 }
 
-/** One Wikidata item from a search — only the fields OSIRIS reads. */
+/** One Wikidata item from a search — only the fields MUSASHI X reads. */
 export interface WikidataItem {
   index?: number;
   coordinates?: { lat?: number; lon?: number }[];
@@ -180,7 +180,7 @@ export function wikidataUrl(q: string): string {
   return `${WIKIDATA}?${params}`;
 }
 
-/** One geocoder hit — only the fields OSIRIS reads. */
+/** One geocoder hit — only the fields MUSASHI X reads. */
 export interface GeocoderFeature {
   geometry?: { coordinates?: [number, number] };
   properties?: Record<string, string | undefined>;

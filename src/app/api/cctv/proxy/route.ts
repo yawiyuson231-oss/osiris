@@ -12,8 +12,8 @@ export const maxDuration = 15;
  * Whitelisted domains only to prevent open-proxy abuse.
  *
  * Never list a shared host here — a cloud storage endpoint, a CDN anyone can
- * publish to. This route answers on OSIRIS's own origin, so anyone able to put
- * a file on an allowed host can have OSIRIS serve it.
+ * publish to. This route answers on MUSASHI X's own origin, so anyone able to put
+ * a file on an allowed host can have MUSASHI X serve it.
  */
 const ALLOWED_HOSTS = [
   'cdn.skylinewebcams.com',
@@ -61,8 +61,8 @@ const RASTER_TYPE = /^image\/(jpeg|pjpeg|png|gif|webp|avif|bmp)\s*(;|$)/i;
  * file say what it is; a declared raster type is taken at its word.
  *
  * Anything else is refused: HTML, and SVG too, which can carry script. This
- * route answers on OSIRIS's own origin, so a page relayed through it would run
- * as OSIRIS and could read what visitors keep in its storage.
+ * route answers on MUSASHI X's own origin, so a page relayed through it would run
+ * as MUSASHI X and could read what visitors keep in its storage.
  */
 export function imageType(data: Buffer, declared: string): string | null {
   if (RASTER_TYPE.test(declared)) return declared;

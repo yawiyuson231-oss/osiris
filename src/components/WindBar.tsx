@@ -10,7 +10,7 @@ import { WindParticles } from '@/lib/wind-particles';
 import { AtCentre, BoxShell, Choice, clock, DAYS, IconButton, Legend, ResetButton, TextButton, TimeReadout, TimeTrack, Tune } from '@/components/TimeBox';
 
 /**
- * OSIRIS — the Wind layer: its streamlines (or, with the layer's Particles
+ * MUSASHI X — the Wind layer: its streamlines (or, with the layer's Particles
  * option, its particles), and the small box that holds its time slider and
  * controls.
  *
@@ -31,7 +31,7 @@ const HOUR = 3600_000;
 const RATES = [1, 3, 6, 12];
 const MAX_FETCHES = 3;
 const RETRY_MS = 30_000;
-const STORE = 'osiris.wind';
+const STORE = 'musashi.wind';
 
 const UNITS = { 'm/s': 1, 'km/h': 3.6, kn: 1.943844 } as const;
 type Unit = keyof typeof UNITS;

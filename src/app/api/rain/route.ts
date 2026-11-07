@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 
 /**
- * OSIRIS — the rain radar frames for the Rain layer: the last two hours,
+ * MUSASHI X — the rain radar frames for the Rain layer: the last two hours,
  * oldest first, a frame every ten minutes.
  * Source: RainViewer's public radar mosaic — no key. The browser pulls the
  * tiles straight from RainViewer's cache; RainBar builds their addresses.
@@ -31,7 +31,7 @@ export async function GET() {
       if (!host || !frames.length) throw new Error('RainViewer: no radar frames');
       cached = { body: { host, frames }, expiresAt: Date.now() + TTL_MS };
     } catch (e) {
-      console.warn('[OSIRIS] rain:', e);
+      console.warn('[MUSASHI X] rain:', e);
       if (!cached) return NextResponse.json({ error: 'Rain radar unavailable' }, { status: 502 });
     }
   }

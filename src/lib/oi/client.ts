@@ -7,7 +7,7 @@
  *
  * The key is kept in this browser only: in localStorage if the visitor asks
  * to be remembered, otherwise in sessionStorage, which the tab forgets when it
- * closes. It travels to OSIRIS in a header on each call that needs it.
+ * closes. It travels to MUSASHI X in a header on each call that needs it.
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ProviderId } from './providers';
@@ -37,10 +37,10 @@ export interface HistoryEntry {
   model: string;
 }
 
-const ENGINE_KEY = 'osiris.oi.engine';
-const HISTORY_KEY = 'osiris.oi.history';
-const TOKENS_KEY = 'osiris.oi.tokens';
-const keySlot = (p: string) => `osiris.oi.key.${p}`;
+const ENGINE_KEY = 'musashi.oi.engine';
+const HISTORY_KEY = 'musashi.oi.history';
+const TOKENS_KEY = 'musashi.oi.tokens';
+const keySlot = (p: string) => `musashi.oi.key.${p}`;
 const HISTORY_CAP = 25;
 
 function store(kind: 'local' | 'session'): Storage | null {
@@ -353,6 +353,6 @@ export function toMarkdown(s: RunState, url: string): string {
   const used = new Set(s.links.filter(l => l.kind === 'cite' || l.kind === 'evidence').flatMap(l => [l.from, l.to]).filter(k => k.startsWith('c:')).map(k => k.slice(2)));
   const sources = s.context.filter(c => used.has(c.id));
   if (sources.length) lines.push('', '## Sources', ...sources.map(c => `- [${c.id}] ${c.kind === 'data' && c.id !== 'data' ? `“${c.title}”` : c.url ? `[${c.title.replace(/[[\]]/g, '')}](${c.url})` : c.title} (${[c.source, c.place, c.published.slice(0, 10)].filter(Boolean).join(', ')})`));
-  lines.push('', `Run on ${s.provider} / ${s.model}, ${s.usage.calls} model calls. Watch: ${url}`, '', '_OSIRIS OI: a prediction engine after MiroFish, rebuilt natively: the actors simulated in parallel worlds. A simulation, not a guarantee._');
+  lines.push('', `Run on ${s.provider} / ${s.model}, ${s.usage.calls} model calls. Watch: ${url}`, '', '_MUSASHI X OI: a prediction engine after MiroFish, rebuilt natively: the actors simulated in parallel worlds. A simulation, not a guarantee._');
   return lines.filter(l => l !== '').join('\n').replace(/\n(#+ )/g, '\n\n$1');
 }

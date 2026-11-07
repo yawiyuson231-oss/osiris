@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { stealthFetch } from '@/lib/stealthFetch';
 
 /**
- * OSIRIS — California CCTV Cameras (Caltrans)
+ * MUSASHI X — California CCTV Cameras (Caltrans)
  * Source: Caltrans' CCTV feature layer on caltrans-gis.dot.ca.gov
  * ~2,900 cameras statewide — NO API KEY NEEDED.
  *
@@ -86,7 +86,7 @@ export async function fetchCaltransCameras(): Promise<CctvCamera[]> {
       result = await fetchPage(page * PAGE_SIZE);
     } catch (e) {
       // A later page failing still leaves the pages already read.
-      console.warn(`[OSIRIS] Caltrans page ${page + 1} failed — serving ${cams.length} cameras:`, e instanceof Error ? e.message : e);
+      console.warn(`[MUSASHI X] Caltrans page ${page + 1} failed — serving ${cams.length} cameras:`, e instanceof Error ? e.message : e);
       break;
     }
     for (const row of result.rows) {

@@ -187,7 +187,7 @@ export async function POST(request: NextRequest) {
   } catch (e) {
     // The store is written in one pass, after the whole batch is checked and
     // with nothing left that can throw, so an error here stored nothing.
-    console.error('[OSIRIS] SDK ingest error:', e);
+    console.error('[MUSASHI X] SDK ingest error:', e);
     return reply(500, 0, 0, ['Server error']);
   }
 }

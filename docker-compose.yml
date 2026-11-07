@@ -1,16 +1,16 @@
-name: osiris
+name: musashi-x
 services:
-  osiris:
+  musashi-x:
     # Builds locally from the Dockerfile so you always run the cloned code.
     # To use the prebuilt image instead, replace the `build:` block below with
-    # `image: ghcr.io/simplifaisoul/osiris:latest`.
+    # `image: ghcr.io/musashi-x/musashi-x:latest`.
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: osiris
-    # Host port is configurable via OSIRIS_PORT in .env (defaults to 3000).
+    container_name: musashi-x
+    # Host port is configurable via MUSASHI_PORT in .env (defaults to 3000).
     ports:
-      - "${OSIRIS_PORT:-3000}:3000"
+      - "${MUSASHI_PORT:-3000}:3000"
     # Optional API keys / scanner backend — copy .env.template to .env and
     # fill in what you need. Missing file is ignored (keyless feeds still work).
     env_file:
@@ -28,26 +28,26 @@ services:
       - default
       - umami_default
 
-  osiris-cache:
+  musashi-cache:
     image: nginx:alpine
-    container_name: osiris-cache
+    container_name: musashi-cache
     ports:
       - "8080:8080"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - nginx-cache:/var/cache/nginx
     depends_on:
-      - osiris
+      - musashi-x
     restart: unless-stopped
     networks:
       - default
 
-  osiris-intel:
+  musashi-intel:
     build:
       context: ./intel
       dockerfile: Dockerfile
-    container_name: osiris-intel
-    # The app reaches this over the compose network (osiris-intel:4000); the
+    container_name: musashi-intel
+    # The app reaches this over the compose network (musashi-intel:4000); the
     # host port is for local debugging only, so it is not published beyond
     # this machine. Its rate limiter trusts X-Forwarded-For, which only the
     # app's proxy route sets.
@@ -69,13 +69,13 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: osiris
-  author: simplifaisoul
-  developer: simplifaisoul
+  main: musashi-x
+  author: musashi-x
+  developer: musashi-x
   category: Network
   description:
     en_us: >-
-      OSIRIS is a production-grade open-source OSINT situational-awareness
+      MUSASHI X is a production-grade open-source OSINT situational-awareness
       dashboard. It aggregates real-time global intelligence across aviation,
       maritime, CCTV networks, seismic activity, wildfires, news feeds,
       weather, space weather, cyber threats (CVEs) and conflict zones into a
@@ -84,11 +84,11 @@ x-casaos:
   tagline:
     en_us: Real-time global OSINT intelligence dashboard
   title:
-    en_us: OSIRIS
-  icon: https://raw.githubusercontent.com/simplifaisoul/osiris/master/public/casaos-icon.png
-  thumbnail: https://raw.githubusercontent.com/simplifaisoul/osiris/master/public/og-image.png
+    en_us: MUSASHI X
+  icon: https://raw.githubusercontent.com/musashi-x/musashi-x/master/public/casaos-icon.png
+  thumbnail: https://raw.githubusercontent.com/musashi-x/musashi-x/master/public/og-image.png
   screenshot_link:
-    - https://raw.githubusercontent.com/simplifaisoul/osiris/master/public/og-image.png
+    - https://raw.githubusercontent.com/musashi-x/musashi-x/master/public/og-image.png
   scheme: http
   hostname: ""
   port_map: "3000"
@@ -100,7 +100,7 @@ x-casaos:
         en_us: "(Optional) RECON scanner backend URL, e.g. http://scanner:7700"
     - container: SCANNER_KEY
       description:
-        en_us: "(Optional) RECON scanner shared secret (must match backend OSIRIS_KEY)."
+        en_us: "(Optional) RECON scanner shared secret (must match backend MUSASHI_KEY)."
     - container: FIRMS_API_KEY
       description:
         en_us: "(Optional) NASA FIRMS API key for active-fire data."

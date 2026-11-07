@@ -1,7 +1,7 @@
 import type { TransitFeed } from './transit';
 
 /**
- * OSIRIS — live, keyless GTFS-Realtime vehicle-position feeds (GENERATED).
+ * MUSASHI X — live, keyless GTFS-Realtime vehicle-position feeds (GENERATED).
  *
  * Built by tools/generate-transit-feeds.mjs on 2026-10-18 from the Mobility
  * Database catalogue (https://mobilitydatabase.org) plus a few feeds it lacks.
@@ -2233,7 +2233,7 @@ export const TRANSIT_FEEDS: TransitFeed[] = [
     "region": "",
     "url": "https://api.entur.io/realtime/v1/gtfs-rt/vehicle-positions",
     "headers": {
-      "ET-Client-Name": "osiris-transit"
+      "ET-Client-Name": "musashi-transit"
     },
     "bbox": [
       4.5,

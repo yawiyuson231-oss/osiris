@@ -1,28 +1,28 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 // No snapshot file is written or read during tests.
-process.env.OSIRIS_GEOCODER_CACHE = 'off';
+process.env.MUSASHI_GEOCODER_CACHE = 'off';
 
 const httpJson = vi.fn();
 vi.mock('@/lib/httpJson', () => ({
   httpJson: (...args: unknown[]) => httpJson(...args),
-  OSIRIS_UA: 'test',
+  MUSASHI_UA: 'test',
 }));
 
 const { geocoder, geocoderStats, clearGeocoderCache, sharedSearch, sharedSearchConfigured } = await import('./geocoder');
 
 beforeEach(() => {
-  process.env.OSIRIS_GEOCODER_URL = 'http://geocoder.test:2322/';
+  process.env.MUSASHI_GEOCODER_URL = 'http://geocoder.test:2322/';
   delete process.env.SHARED_SEARCH_URL;
   clearGeocoderCache();
   httpJson.mockReset();
 });
 
 describe('sharedSearch', () => {
-  it('asks osirisai.live by default, so a copy needs nothing set up', async () => {
+  it('asks musashi-x.app by default, so a copy needs nothing set up', async () => {
     httpJson.mockResolvedValue({ results: [] });
     await sharedSearch({ q: 'Lviv', lat: '49.8', lng: '24' });
-    expect(httpJson.mock.calls[0][0]).toBe('https://osirisai.live/api/geosearch/shared?q=Lviv&lat=49.8&lng=24');
+    expect(httpJson.mock.calls[0][0]).toBe('https://musashi-x.app/api/geosearch/shared?q=Lviv&lat=49.8&lng=24');
   });
 
   it('asks another deployment when told to, and nothing when it is off', async () => {
@@ -47,7 +47,7 @@ describe('sharedSearch', () => {
 
 describe('geocoder', () => {
   it('asks nothing at all when no geocoder is configured', async () => {
-    delete process.env.OSIRIS_GEOCODER_URL;
+    delete process.env.MUSASHI_GEOCODER_URL;
     expect(await geocoder({ q: 'Sumy' })).toBeNull();
     expect(httpJson).not.toHaveBeenCalled();
     expect(geocoderStats().configured).toBe(false);

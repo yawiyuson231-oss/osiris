@@ -1,5 +1,5 @@
 /**
- * OSIRIS — Live transit: the shared shapes and the map-side helpers.
+ * MUSASHI X — Live transit: the shared shapes and the map-side helpers.
  *
  * Buses (and, where an operator's feed includes them, trams, metros, trains
  * and ferries) come from operators' own GTFS-Realtime vehicle-position feeds,

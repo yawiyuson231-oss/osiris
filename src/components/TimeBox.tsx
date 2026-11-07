@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Power, SlidersHorizontal, type LucideIcon } from 'lucide-react';
 
 /**
- * OSIRIS — the small boxes that hold a weather layer's time and controls
+ * MUSASHI X — the small boxes that hold a weather layer's time and controls
  * (WindBar, RainBar). They stack in one dock at the bottom left, above the
  * 3D/2D and MAP/SAT strip and in line with it. Each folds to a chip that
  * still shows the time its layer is drawn at, and its power button turns the
@@ -142,7 +142,7 @@ export function AtCentre({ title, children }: { title?: string; children: React.
 }
 
 /** A box opened on a phone folds the others: there's room for one. */
-const OPENED = 'osiris:timebox-open';
+const OPENED = 'musashi:timebox-open';
 const narrow = () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
 
 /**

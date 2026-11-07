@@ -129,7 +129,7 @@ export default function CutoutView({ box, problem }: { box: LngLatBox | null; pr
 
       {/* Top left: where this came from */}
       <div className="absolute left-4 top-4 flex items-center gap-3">
-        <Link href="/" className="rounded-md border border-white/15 bg-black/80 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-[#D4AF37] backdrop-blur hover:border-[#D4AF37]/60">OSIRIS</Link>
+        <Link href="/" className="rounded-md border border-white/15 bg-black/80 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-[#D4AF37] backdrop-blur hover:border-[#D4AF37]/60">MUSASHI X</Link>
         <button onClick={copyLink} className="flex items-center gap-1.5 rounded-md border border-white/15 bg-black/80 px-3 py-2 text-[10px] font-mono font-bold uppercase tracking-widest text-white/75 backdrop-blur hover:border-[#D4AF37]/50 hover:text-[#D4AF37]" title="Copy this cut-out's link">
           {copied ? <Check className="h-3.5 w-3.5 text-[var(--alert-green,#00E676)]" /> : <Link2 className="h-3.5 w-3.5" />}{copied ? 'Copied' : 'Copy link'}
         </button>

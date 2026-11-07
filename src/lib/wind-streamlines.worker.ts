@@ -2,7 +2,7 @@ import type { WindGrid } from './wind-layer';
 import { createWindBaker, type WindBakeRequest } from './wind-streamlines';
 
 /**
- * OSIRIS — the Wind layer's streamlines, made off the main thread. A full set
+ * MUSASHI X — the Wind layer's streamlines, made off the main thread. A full set
  * takes the best part of a tenth of a second, and while the time slider plays
  * they are remade several times a second; here that never holds up the map.
  */

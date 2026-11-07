@@ -2,7 +2,7 @@ import { LngLat, type Map as MlMap } from 'maplibre-gl';
 import { sampleWind, WIND_BANDS, WIND_STYLE, type WindGrid, type WindStyle } from './wind-layer';
 
 /**
- * OSIRIS — the Wind layer's classic look: wind drawn as it blows.
+ * MUSASHI X — the Wind layer's classic look: wind drawn as it blows.
  *
  * Thousands of particles ride the GFS surface wind (see wind-field), each
  * dragging a tail through the last places it has been, the way a weather map
@@ -76,7 +76,7 @@ export class WindParticles {
   constructor(map: MlMap) {
     this.map = map;
     this.canvas = document.createElement('canvas');
-    this.canvas.className = 'osiris-wind';
+    this.canvas.className = 'musashi-wind';
     Object.assign(this.canvas.style, { position: 'absolute', left: '0', top: '0', pointerEvents: 'none' });
     map.getCanvasContainer().appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d')!;

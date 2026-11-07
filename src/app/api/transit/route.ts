@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
 
 /**
- * OSIRIS — Live transit vehicles from operators' GTFS-Realtime feeds.
+ * MUSASHI X — Live transit vehicles from operators' GTFS-Realtime feeds.
  *
  *   GET /api/transit?bbox=west,south,east,north  every vehicle in the box
  *   GET /api/transit?coverage=1                  where there are feeds, and how many vehicles each had

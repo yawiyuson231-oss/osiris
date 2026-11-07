@@ -3,15 +3,15 @@ import { dirname, join } from 'node:path';
 import { httpJson } from '@/lib/httpJson';
 
 /**
- * OSIRIS — the OSIRIS geocoder, for place search.
+ * MUSASHI X — the MUSASHI X geocoder, for place search.
  *
- * When OSIRIS_GEOCODER_URL is set, the search box and directions search ask
+ * When MUSASHI_GEOCODER_URL is set, the search box and directions search ask
  * the geocoder the deployment runs itself, over OpenStreetMap data, through
  * /api/geosearch and this module. A server of our own has no usage policy for
  * our traffic to outgrow.
  *
- * Without OSIRIS_GEOCODER_URL, a copy asks the shared search of an OSIRIS
- * deployment that runs one — osirisai.live unless SHARED_SEARCH_URL says
+ * Without MUSASHI_GEOCODER_URL, a copy asks the shared search of an MUSASHI X
+ * deployment that runs one — musashi-x.app unless SHARED_SEARCH_URL says
  * otherwise — so it gets the same streets and addresses with nothing to set
  * up. When that cannot answer either, the browser searches Wikipedia,
  * Wikidata and the built-in place list instead (lib/geosearch.ts). So the
@@ -33,10 +33,11 @@ import { httpJson } from '@/lib/httpJson';
  */
 
 /** The geocoder's address, e.g. `http://geocoder.internal:2322`; empty turns lookups off. */
-const baseUrl = () => (process.env.OSIRIS_GEOCODER_URL || '').trim().replace(/\/+$/, '');
+const envGet = (musashiKey: string, osirisKey: string) => (process.env[musashiKey] || process.env[osirisKey] || '');
+const baseUrl = () => (envGet('MUSASHI_GEOCODER_URL', 'OSIRIS_GEOCODER_URL') || '').trim().replace(/\/+$/, '');
 
-/** Where a copy without a geocoder searches instead: the deployment that runs osirisai.live. */
-export const DEFAULT_SHARED_SEARCH = 'https://osirisai.live/api/geosearch/shared';
+/** Where a copy without a geocoder searches instead: the deployment that runs musashi-x.app. */
+export const DEFAULT_SHARED_SEARCH = 'https://musashi-x.app/api/geosearch/shared';
 
 /** The shared search to ask; empty when SHARED_SEARCH_URL is `off`. Unset or blank means the default. */
 const sharedUrl = () => {
@@ -72,7 +73,7 @@ let downUntil = 0;
 /** Counted so the health check can show what we are actually sending. */
 const stats = { served: 0, fromCache: 0, sent: 0, refused: 0, failed: 0 };
 
-const snapshotPath = () => process.env.OSIRIS_GEOCODER_CACHE || join(process.cwd(), '.cache', 'geocoder.json');
+const snapshotPath = () => envGet('MUSASHI_GEOCODER_CACHE', 'OSIRIS_GEOCODER_CACHE') || join(process.cwd(), '.cache', 'geocoder.json');
 
 let loaded: Promise<void> | null = null;
 let dirty = false;
@@ -80,7 +81,7 @@ let dirty = false;
 /** Reads the cache written by an earlier run, once. */
 function ensureLoaded(): Promise<void> {
   loaded ??= (async () => {
-    if (process.env.OSIRIS_GEOCODER_CACHE === 'off') return;
+    if (envGet('MUSASHI_GEOCODER_CACHE', 'OSIRIS_GEOCODER_CACHE') === 'off') return;
     try {
       const raw = await fs.readFile(snapshotPath(), 'utf8');
       const saved = JSON.parse(raw) as Record<string, Entry>;
@@ -88,7 +89,7 @@ function ensureLoaded(): Promise<void> {
       for (const [key, entry] of Object.entries(saved)) {
         if (entry && entry.expires > now) cache.set(key, entry);
       }
-      console.log(`[OSIRIS] Place cache restored: ${cache.size} answers from disk`);
+      console.log(`[MUSASHI X] Place cache restored: ${cache.size} answers from disk`);
     } catch { /* first run, or an unreadable snapshot — start empty */ }
   })();
   return loaded;
@@ -97,7 +98,7 @@ function ensureLoaded(): Promise<void> {
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
 function scheduleSave() {
   dirty = true;
-  if (saveTimer || process.env.OSIRIS_GEOCODER_CACHE === 'off') return;
+  if (saveTimer || envGet('MUSASHI_GEOCODER_CACHE', 'OSIRIS_GEOCODER_CACHE') === 'off') return;
   // Batched: a burst of lookups costs one write, a minute after the first.
   saveTimer = setTimeout(() => {
     saveTimer = null;
@@ -116,7 +117,7 @@ async function save(): Promise<void> {
     await fs.writeFile(temporary, JSON.stringify(Object.fromEntries(cache)), 'utf8');
     await fs.rename(temporary, path);
   } catch (error) {
-    console.warn('[OSIRIS] Could not save the place cache:', error);
+    console.warn('[MUSASHI X] Could not save the place cache:', error);
   }
 }
 
@@ -169,7 +170,7 @@ export async function geocoder<T>(params: GeocoderParams): Promise<T | null> {
 
 /**
  * Ask the shared search (`q`, and `lat`/`lng` for the bias), for a copy with
- * no geocoder of its own. It answers `{ results }` already in OSIRIS's shape,
+ * no geocoder of its own. It answers `{ results }` already in MUSASHI X's shape,
  * under the same cache, queue and rest as the geocoder. Resolves null when it
  * is off, refused or did not answer.
  */
@@ -219,7 +220,7 @@ async function ask<T>(url: string, key: string): Promise<T | null> {
     } catch (error) {
       stats.failed++;
       downUntil = Date.now() + BACKOFF_MS;
-      console.warn('[OSIRIS] Place search failed:', error instanceof Error ? error.message : error);
+      console.warn('[MUSASHI X] Place search failed:', error instanceof Error ? error.message : error);
       return null;
     } finally {
       release();

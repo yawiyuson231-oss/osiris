@@ -84,7 +84,7 @@ describe('placesNamed and placeLabel', () => {
   });
 });
 
-describe('the list OSIRIS ships', () => {
+describe('the list MUSASHI X ships', () => {
   const real = serverPlaces();
 
   it('holds towns, countries and regions', () => {

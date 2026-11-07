@@ -2,7 +2,7 @@ import { cachedSource } from '@/lib/sourceCache';
 import { loadIbi511Cameras, type Ibi511Source } from './ibi511';
 
 /**
- * OSIRIS — Idaho CCTV Cameras (ITD / 511.idaho.gov)
+ * MUSASHI X — Idaho CCTV Cameras (ITD / 511.idaho.gov)
  * Source: https://511.idaho.gov — the same IBI 511 stack Arizona and Florida run
  * ~415 cameras statewide — NO API KEY NEEDED.
  *

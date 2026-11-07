@@ -1,5 +1,5 @@
 /**
- * OSIRIS vision: a vehicle's colour, from its own pixels.
+ * MUSASHI X vision: a vehicle's colour, from its own pixels.
  *
  * Seen from a traffic camera, a vehicle's box holds its paint, its windows,
  * its tyres and its shadow. The windows and shadow are dark whatever the car,

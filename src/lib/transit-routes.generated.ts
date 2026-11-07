@@ -1,5 +1,5 @@
 /**
- * OSIRIS — route names and modes for the live-transit feeds (GENERATED).
+ * MUSASHI X — route names and modes for the live-transit feeds (GENERATED).
  *
  * From each feed's GTFS timetable (routes.txt), read by
  * tools/generate-transit-feeds.mjs --routes on 2026-10-17. Keyed by feed URL

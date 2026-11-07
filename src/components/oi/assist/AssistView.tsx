@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI Assist: the conversation.
+ * MUSASHI X OI Assist: the conversation.
  *
  * Talk to OI, typed or spoken, and it works the map for you: it flies there,
  * switches the layers on, finds what is live, marks it, and puts it on screen

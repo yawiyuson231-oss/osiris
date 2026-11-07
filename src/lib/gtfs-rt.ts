@@ -1,5 +1,5 @@
 /**
- * OSIRIS — GTFS-Realtime vehicle positions, decoded without a protobuf library.
+ * MUSASHI X — GTFS-Realtime vehicle positions, decoded without a protobuf library.
  *
  * Transit operators publish where their vehicles are as a GTFS-Realtime
  * FeedMessage: protocol buffers, in a schema that has not changed shape since

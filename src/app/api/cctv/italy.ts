@@ -43,7 +43,7 @@ const SKYLINE_ITALY: CctvCamera[] = [
  * path comes from the list, so it is checked against the one shape it takes
  * before it is joined onto Autostrade's own video host.
  */
-const UA = 'OSIRIS/5.0 (+https://osirisai.live)';
+const UA = 'MUSASHI X/5.0 (+https://musashi-x.app)';
 const ASPI_LIST = 'https://viabilita.autostrade.it/json/webcams.json';
 const ASPI_VIDEO = 'https://video.autostrade.it/video-mp4_hq/';
 /** "dt4/fdb2dcf0-d228-491f-948b-032d4a12a14e-23.mp4" */
@@ -122,7 +122,7 @@ export async function fetchAutostradeCameras(): Promise<CctvCamera[]> {
 export async function fetchItalyCameras(): Promise<CctvCamera[]> {
   // The motorway list failing must not take the city webcams down with it.
   const motorways = await fetchAutostradeCameras().catch(e => {
-    console.warn('[OSIRIS] Autostrade per l\'Italia failed — absent from this refresh:', e instanceof Error ? e.message : e);
+    console.warn('[MUSASHI X] Autostrade per l\'Italia failed — absent from this refresh:', e instanceof Error ? e.message : e);
     return [] as CctvCamera[];
   });
   return [...SKYLINE_ITALY, ...motorways];

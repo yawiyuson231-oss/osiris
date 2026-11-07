@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════
-   OSIRIS — Global Intelligence Platform Design System
+   MUSASHI X — Global Intelligence Platform Design System
    Egyptian Mythology × Dark Ops × Glassmorphism
    ═══════════════════════════════════════════════════════════════ */
 
@@ -230,15 +230,17 @@ html:has(.docs-root) body {
   border-radius: 10px;
 }
 
-/* ── Osiris Gold Glow ── */
-.osiris-glow {
+/* ── Musashi X Gold Glow ── */
+.osiris-glow,
+.musashi-glow {
   box-shadow:
     0 0 20px rgba(var(--gold-rgb), 0.12),
     0 0 60px rgba(var(--gold-rgb), 0.06),
     0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-.osiris-glow-cyan {
+.osiris-glow-cyan,
+.musashi-glow-cyan {
   box-shadow:
     0 0 20px rgba(var(--cyan-rgb), 0.1),
     0 0 60px rgba(var(--cyan-rgb), 0.05);
@@ -277,12 +279,27 @@ html:has(.docs-root) body {
   50% { opacity: 0.5; }
 }
 
+@keyframes musashi-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
 @keyframes osiris-scan {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
 }
 
+@keyframes musashi-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
 @keyframes osiris-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes musashi-rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
@@ -303,6 +320,7 @@ html:has(.docs-root) body {
 }
 
 .animate-osiris-pulse { animation: osiris-pulse 2s ease-in-out infinite; }
+.animate-musashi-pulse { animation: musashi-pulse 2s ease-in-out infinite; }
 .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
 .animate-data-pulse { animation: data-pulse 2s ease-in-out infinite; }
 .animate-threat-flash { animation: threat-flash 1.5s ease-in-out infinite; }
@@ -2502,7 +2520,7 @@ html[data-oi-theater] [data-map-controls] {
   transition: opacity 0.3s ease;
 }
 
-/* ── OSIRIS OI: gold and black ──
+/* ── MUSASHI X OI: gold and black ──
    The OI panel and workspace keep to two tones: gold leads (what is selected,
    what is live, the prediction), champagne is its quiet second where the
    platform would use cyan, and the surfaces are black rather than navy. In

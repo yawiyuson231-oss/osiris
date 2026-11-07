@@ -4,7 +4,7 @@ import { stealthFetch } from '@/lib/stealthFetch';
 export const dynamic = 'force-dynamic';
 
 /**
- * OSIRIS — Conflict zones and the headlines that mention them
+ * MUSASHI X — Conflict zones and the headlines that mention them
  *
  * Two different things, kept apart:
  * 1. The zones: a curated list kept by hand. Each zone's position is a
@@ -221,13 +221,13 @@ async function fetchHeadlinesByZone(): Promise<Record<string, Headline[]>> {
         });
         
         if (!res.ok) {
-          console.log(`[OSIRIS] RSS Fetch Failed for ${url}: ${res.status}`);
+          console.log(`[MUSASHI X] RSS Fetch Failed for ${url}: ${res.status}`);
           return [];
         }
         
         const xml = await res.text();
         const rawItems = xml.split(/<item>/i).slice(1);
-        console.log(`[OSIRIS] RSS ${url} returned ${rawItems.length} items`);
+        console.log(`[MUSASHI X] RSS ${url} returned ${rawItems.length} items`);
         
         return rawItems.map(rawItem => {
           const item = rawItem.split(/<\/item>/i)[0];
@@ -244,7 +244,7 @@ async function fetchHeadlinesByZone(): Promise<Record<string, Headline[]>> {
           };
         }).filter(Boolean);
       } catch (err) {
-        console.log(`[OSIRIS] RSS Fetch Error for ${url}:`, (err as Error).message);
+        console.log(`[MUSASHI X] RSS Fetch Error for ${url}:`, (err as Error).message);
         return [];
       }
     });
@@ -306,7 +306,7 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error('[OSIRIS] Conflict API error:', error);
+    console.error('[MUSASHI X] Conflict API error:', error);
     
     // Fallback: return known zones without live enrichment
     const fallbackZones = KNOWN_CONFLICTS.map(zone => ({

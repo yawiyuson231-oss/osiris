@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- *  OSIRIS — One-Click AI Overview
+ *  MUSASHI X — One-Click AI Overview
  *  POST /api/ai/overview   body: { mode: 'alerts' | 'markets' | 'chain', payload }
  *
  *  Generates an intelligence read-out for the Alerts, Markets or Chain
@@ -269,12 +269,12 @@ function heuristicOverview(mode: Mode, digest: Digest): string {
 }
 
 const SYSTEM_DEFAULT =
-  'You are OSIRIS, a terse intelligence analyst. Given structured facts, write a sharp 2-4 sentence situational read-out. No preamble, no markdown headers, no hedging. Lead with the bottom line.';
+  'You are MUSASHI X, a terse intelligence analyst. Given structured facts, write a sharp 2-4 sentence situational read-out. No preamble, no markdown headers, no hedging. Lead with the bottom line.';
 
 /* Alerts come from partisan Telegram channels, so the read-out has to keep
    every claim attached to whoever made it. */
 const SYSTEM_ALERTS = [
-  'You are OSIRIS, an OSINT analyst writing a situational read-out from a feed of Telegram channel posts.',
+  'You are MUSASHI X, an OSINT analyst writing a situational read-out from a feed of Telegram channel posts.',
   'Write 3-5 sentences of plain prose: no preamble, no headers, no bullet points. Lead with the bottom line.',
   'Attribute each claim to the channel that posted it and give its declared perspective, e.g. "per Rybar (Russian-aligned)".',
   'These channels are partisan and a post is not verification. Say when a story is carried by only one side, and when Western and Russian-aligned channels both carry it. Never state an unverified claim as fact.',
@@ -299,7 +299,7 @@ async function geminiOverview(mode: Mode, digest: Digest, keys: string[], headli
     const text = result.response.text().trim();
     return text || null;
   } catch (e) {
-    console.warn('[OSIRIS] Gemini overview failed, using heuristic:', e);
+    console.warn('[MUSASHI X] Gemini overview failed, using heuristic:', e);
     return null;
   }
 }

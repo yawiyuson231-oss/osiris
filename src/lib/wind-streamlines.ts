@@ -1,7 +1,7 @@
 import { sampleWind, type WindGrid } from './wind-layer';
 
 /**
- * OSIRIS — wind as streamlines.
+ * MUSASHI X — wind as streamlines.
  *
  * The wind is drawn the way God's Eye View (MIT, github.com/bilawalsidhu/gods-eye-view)
  * draws it: not particles that wander, but a fixed set of fine curves that

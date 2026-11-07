@@ -21,7 +21,7 @@ import { fileURLToPath } from 'node:url';
 
 const BASE = 'https://voyage.aprr.fr';
 const OUT = fileURLToPath(new URL('../src/app/api/cctv/aprr.generated.ts', import.meta.url));
-const UA = 'OSIRIS-CCTV/1.0 (+https://osirisai.live)';
+const UA = 'MUSASHI X-CCTV/1.0 (+https://musashi-x.app)';
 const TIMEOUT_MS = 20_000;
 const CONCURRENCY = 4;
 
@@ -85,7 +85,7 @@ const body = cameras.map(c => `  ${JSON.stringify(c)},`).join('\n');
 writeFileSync(OUT, `import type { CctvCamera } from './types';
 
 /**
- * OSIRIS — APRR / AREA motorway webcams (GENERATED).
+ * MUSASHI X — APRR / AREA motorway webcams (GENERATED).
  *
  * Written by tools/generate-aprr-catalogue.mjs from voyage.aprr.fr — do not
  * edit by hand. Each stream_url is a Viewsurf redirect to that camera's newest

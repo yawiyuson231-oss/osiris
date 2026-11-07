@@ -10,7 +10,7 @@ import { ELEVATION_RAMP, ramp, robustRange, shade } from './grid';
  * vertical exaggeration and colour stretch are ours to set — the service's own
  * rendered layers fix all three, and its contours come on an opaque page.
  *
- * Tile URL: osiris-lidar://{mode}/{z}/{x}/{y}?az=315&alt=45&ex=1&lo=..&hi=..
+ * Tile URL: musashi-lidar:// (alias osiris-lidar://){mode}/{z}/{x}/{y}?az=315&alt=45&ex=1&lo=..&hi=..
  *
  * The heights download in the background. A tile whose heights are not here
  * yet comes back empty at once and is redrawn when they land (see
@@ -39,7 +39,7 @@ const RAW = SIZE + 2;
 export function reliefTileUrl(p: ReliefParams): string {
   const q = new URLSearchParams({ az: String(Math.round(p.az)), alt: String(Math.round(p.alt)), ex: String(+p.ex.toFixed(2)) });
   if (p.lo !== undefined && p.hi !== undefined) { q.set('lo', p.lo.toFixed(2)); q.set('hi', p.hi.toFixed(2)); }
-  return `osiris-lidar://${p.mode}/{z}/{x}/{y}?${q}`;
+  return `musashi-lidar://${p.mode}/{z}/{x}/{y}?${q}`;
 }
 
 function tileBbox(z: number, x: number, y: number, padPx = 0): Bbox {
@@ -89,7 +89,7 @@ function want(z: number, x: number, y: number): Promise<Float32Array | null> {
     }, () => {
       if (!ctl.signal.aborted && !warned) {
         warned = true;
-        console.warn('[OSIRIS] USGS elevation is not answering; some lidar relief tiles are blank');
+        console.warn('[MUSASHI X] USGS elevation is not answering; some lidar relief tiles are blank');
       }
       return null;
     })
@@ -202,7 +202,7 @@ async function encode(painted: ReturnType<typeof paintTile>): Promise<ArrayBuffe
   return blob.arrayBuffer();
 }
 
-const MATCH = /^osiris-lidar:\/\/(\w+)\/(\d+)\/(\d+)\/(\d+)\?(.*)$/;
+const MATCH = /^(?:osiris|musashi)-lidar:\/\/(\w+)\/(\d+)\/(\d+)\/(\d+)\?(.*)$/;
 
 export const reliefProtocol: AddProtocolAction = async (request, controller) => {
   const m = MATCH.exec(request.url);
@@ -249,6 +249,7 @@ let installed = false;
 export function installReliefProtocol(addProtocol: (name: string, handler: AddProtocolAction) => void) {
   if (installed) return;
   addProtocol('osiris-lidar', reliefProtocol);
+  addProtocol('musashi-lidar', reliefProtocol);
   installed = true;
 }
 

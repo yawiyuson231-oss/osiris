@@ -4,7 +4,7 @@ import { boxProblem, parseBox } from '@/lib/cutout';
 
 export const metadata: Metadata = {
   title: 'Cut-out',
-  description: 'A piece of the OSIRIS map in 3D, with the CCTV cameras and network hosts inside it.',
+  description: 'A piece of the MUSASHI X map in 3D, with the CCTV cameras and network hosts inside it.',
   robots: { index: false },
 };
 
@@ -12,6 +12,6 @@ export const metadata: Metadata = {
 export default async function CutoutPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const q = await searchParams;
   const box = parseBox(typeof q.bbox === 'string' ? q.bbox : null);
-  const problem = box ? boxProblem(box) : 'This link has no area in it. Draw a cut-out on the OSIRIS map to make one.';
+  const problem = box ? boxProblem(box) : 'This link has no area in it. Draw a cut-out on the MUSASHI X map to make one.';
   return <CutoutView box={box} problem={problem} />;
 }

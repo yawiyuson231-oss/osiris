@@ -2,7 +2,7 @@ import { assistStep } from '@/lib/oi/assist/server';
 import { credentials, disabled, disabledResponse, fail, json, limited, readBody } from '@/lib/oi/service';
 
 /**
- * OSIRIS OI Assist — one step of the conversation.
+ * MUSASHI X OI Assist — one step of the conversation.
  *
  * POST /api/oi/assist
  *   headers  X-OI-Provider, X-OI-Key (or Authorization: Bearer), X-OI-Model (optional)

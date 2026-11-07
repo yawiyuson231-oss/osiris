@@ -5,9 +5,9 @@ import type { IncomingHttpHeaders } from 'http';
 import type { Readable } from 'stream';
 
 /**
- * OSIRIS — JSON fetch over Node's https client.
+ * MUSASHI X — JSON fetch over Node's https client.
  *
- * Some upstreams OSIRIS depends on cannot be reached with the bundled undici
+ * Some upstreams MUSASHI X depends on cannot be reached with the bundled undici
  * `fetch` from the Next server runtime — it stalls and throws
  * UND_ERR_CONNECT_TIMEOUT after 10s, while `https.get` to the same URL returns
  * in a few hundred ms. This helper is the shared escape hatch.
@@ -17,7 +17,8 @@ import type { Readable } from 'stream';
  * with 406/429 and ask for contact details in their usage policies.
  */
 
-export const OSIRIS_UA = 'OSIRIS-OSINT/1.0 (+https://github.com/simplifaisoul/osiris)';
+export const MUSASHI_UA = 'MUSASHI X-OSINT/1.0 (+https://github.com/musashi-x/musashi-x)';
+export const OSIRIS_UA = MUSASHI_UA; // legacy alias for backwards compat
 
 export interface RequestOptions {
   timeoutMs?: number;
@@ -44,7 +45,7 @@ function request(url: string, { timeoutMs = 20000, headers = {} }: RequestOption
     const req = (url.startsWith('http:') ? http : https).get(
       url,
       {
-        headers: { 'User-Agent': OSIRIS_UA, Accept: 'application/json', 'Accept-Language': 'en', ...headers },
+        headers: { 'User-Agent': MUSASHI_UA, Accept: 'application/json', 'Accept-Language': 'en', ...headers },
         timeout: timeoutMs,
       },
       (res) => {

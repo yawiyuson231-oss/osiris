@@ -3,7 +3,7 @@ import { MercatorCoordinate } from 'maplibre-gl';
 import { createSatelliteProgramCache } from './satellite-programs';
 
 /**
- * OSIRIS — satellites drawn at their real altitude
+ * MUSASHI X — satellites drawn at their real altitude
  *
  * Satellites were circle features pinned to the ground, so a 35,786 km GEO
  * bird and a 400 km ISS sat on the same surface as a traffic camera. The map
@@ -490,7 +490,7 @@ export function createSatelliteLayer(id: string): CustomLayerInterface & {
     pick(x: number, y: number): number | null {
       if (!gl || !activeShader || !buffer || !lastProjection || count === 0) return null;
       try { pickProgram = programs.get(activeShader, 'pick'); }
-      catch (error) { console.warn('[OSIRIS] Satellite picking unavailable:', error); return null; }
+      catch (error) { console.warn('[MUSASHI X] Satellite picking unavailable:', error); return null; }
       const w = gl.drawingBufferWidth, h = gl.drawingBufferHeight;
       ensurePickTargets(w, h);
       if (!pickFbo) return null;
@@ -556,7 +556,7 @@ export function createSatelliteLayer(id: string): CustomLayerInterface & {
         orbitProgram = orbitSegments?.length ? programs.get(shader, 'orbit') : null;
         activeShader = shader;
       } catch (err) {
-        console.error('[OSIRIS] satellite layer:', err instanceof Error ? err.message : err);
+        console.error('[MUSASHI X] satellite layer:', err instanceof Error ? err.message : err);
         return;
       }
       if (!program) return;

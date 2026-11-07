@@ -3,7 +3,7 @@ import { stealthFetch } from '@/lib/stealthFetch';
 import { cachedSource } from '@/lib/sourceCache';
 
 /**
- * OSIRIS — Iowa CCTV Cameras (Iowa DOT / 511ia.org)
+ * MUSASHI X — Iowa CCTV Cameras (Iowa DOT / 511ia.org)
  * Source: https://511ia.org/api/graphql — the CARS 511 platform Indiana runs on
  * ~860 statewide cameras — NO API KEY NEEDED.
  *
@@ -153,7 +153,7 @@ async function loadIowaCameras(): Promise<CctvCamera[]> {
     cams.push(cam);
   }
 
-  console.log(`[OSIRIS] Iowa cameras — Iowa DOT: ${cams.length} (${cams.filter(c => c.stream_url).length} live)`);
+  console.log(`[MUSASHI X] Iowa cameras — Iowa DOT: ${cams.length} (${cams.filter(c => c.stream_url).length} live)`);
   return cams;
 }
 
