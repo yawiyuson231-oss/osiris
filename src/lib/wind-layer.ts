@@ -1,7 +1,7 @@
 import type { WindField } from './wind-field';
 
 /**
- * OSIRIS — the wind data the Wind layer draws: the grid it reads from, and
+ * MUSASHI X — the wind data the Wind layer draws: the grid it reads from, and
  * how to read it. It is drawn as streamlines (wind-gl-layer, whose curves are
  * made in wind-streamlines) or, with the layer's Particles option, as
  * particles (wind-particles).

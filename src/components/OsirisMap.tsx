@@ -420,7 +420,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         // A failed constructor leaves its canvas behind; the next attempt needs a clean container.
         container.innerHTML = '';
         if (canvasContextAttributes === attributeFallbacks[attributeFallbacks.length - 1]) throw e;
-        console.warn('[OSIRIS] WebGL context rejected, retrying with weaker attributes:', e instanceof Error ? e.message : e);
+        console.warn('[MUSASHI X] WebGL context rejected, retrying with weaker attributes:', e instanceof Error ? e.message : e);
       }
     }
     if (!map) return;
@@ -449,7 +449,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       const flightGov = boot.flightGov;
       const flightMil = boot.flightMilitary;
 
-      // Create icons — OSIRIS Unified Palette
+      // Create icons — MUSASHI X Unified Palette
       createIcon(map, 'plane-cyan', flightCom, 24);   
       createIcon(map, 'plane-green', flightPriv, 24);   
       createIcon(map, 'plane-pink', flightGov, 24);    
@@ -876,7 +876,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         'text-offset': [0, 1.5], 'text-allow-overlap': false,
       }, paint: { 'text-color': ['match', ['get','status'], 'DANGER','#D32F2F', 'WARNING','#E65100', '#7E57C2'], 'text-halo-color': '#000', 'text-halo-width': 1 }});
 
-      // ══ OSIRIS SDK — Lattice Intelligence Mesh ══
+      // ══ MUSASHI X SDK — Lattice Intelligence Mesh ══
       // Polybolos Style: Delicate, translucent, steel-blue splined mesh
 
       // ── SEA domain (Distinct Solid Lines) ──
@@ -943,7 +943,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       map.once('idle', () => onReadyRef.current?.());
       // Dev-only handle. The map is otherwise unreachable from the console,
       // which makes interaction bugs guesswork rather than diagnosis.
-      if (process.env.NODE_ENV === 'development') (window as any).__osirisMap = map;
+      if (process.env.NODE_ENV === 'development') (window as any).__musashiMap = map;
     });
 
     // Events
@@ -1041,7 +1041,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
           <div id="ac-${idSafe(p.icao24||'')}" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);">
             <span style="color:#5C5A54;font-size:9px;letter-spacing:0.1em;">IDENTIFYING AIRFRAME…</span>
           </div>
-          <button onclick="window.osirisWatchFlight && window.osirisWatchFlight({ icao24: '${idSafe(p.icao24||'')}', callsign: '${idSafe(cs)}' })" style="width:100%;margin-top:8px;padding:6px 12px;background:rgba(0,229,255,0.10);border:1px solid rgba(0,229,255,0.35);color:#7FE9FF;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:bold;letter-spacing:0.1em;border-radius:4px;cursor:pointer;">+ WATCH THIS AIRCRAFT</button>
+          <button onclick="window.musashiWatchFlight && window.musashiWatchFlight({ icao24: '${idSafe(p.icao24||'')}', callsign: '${idSafe(cs)}' })" style="width:100%;margin-top:8px;padding:6px 12px;background:rgba(0,229,255,0.10);border:1px solid rgba(0,229,255,0.35);color:#7FE9FF;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:bold;letter-spacing:0.1em;border-radius:4px;cursor:pointer;">+ WATCH THIS AIRCRAFT</button>
           <div id="${routeLoadingId}" style="margin-top:8px;padding:6px;border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
             <span style="color:#5C5A54;font-size:9px;letter-spacing:0.1em;">RESOLVING ROUTE…</span>
           </div>
@@ -1423,13 +1423,13 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
           <div><span style="color:#5C5A54;">IN THE NEWS</span><br/><span style="color:#E8E6E0;">${count} headline${count === 1 ? '' : 's'}</span></div>
         </div>
         ${headlineList ? `<div style="padding-top:6px;border-top:1px solid rgba(255,255,255,0.06);margin-bottom:8px;"><div style="font-size:8.5px;letter-spacing:0.14em;color:#5C5A54;">HEADLINES THAT MENTION IT</div>${headlineList}</div>` : ''}
-        <div style="font-size:8.5px;color:#5C5A54;line-height:1.4;margin-bottom:6px;">The zone and its severity come from a list OSIRIS keeps by hand, not from a live measurement.</div>
+        <div style="font-size:8.5px;color:#5C5A54;line-height:1.4;margin-bottom:6px;">The zone and its severity come from a list MUSASHI X keeps by hand, not from a live measurement.</div>
         ${p.sourceUrl ? `<a href="${urlSafe(p.sourceUrl)}" target="_blank" rel="noopener noreferrer" style="${linkStyle}flex:1;text-align:center;color:${color};border:1px solid ${color}40;background:${color}15;display:inline-block;width:100%;box-sizing:border-box;margin-top:4px;">[ OPEN SOURCE ↗ ]</a>` : ''}
       </div>`);
     });
 
 
-    // ── OSIRIS SDK link click ──
+    // ── MUSASHI X SDK link click ──
     const SDK_SOURCE_URLS: Record<string, string> = {
       'AIS Maritime': 'https://www.marinetraffic.com',
       'AIS Stream': 'https://aisstream.io',
@@ -1443,7 +1443,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         if (!e.features?.length) return;
         const p = e.features[0].properties as any;
         const coords = e.lngLat;
-        const srcUrl = p.url || SDK_SOURCE_URLS[p.source] || 'https://osirisai.live';
+        const srcUrl = p.url || SDK_SOURCE_URLS[p.source] || 'https://musashi-x.app';
         const domainLabel = p.domain === 'SEA' ? '⚓ MARITIME' : p.domain === 'AIR' ? '✈ AIR CORRIDOR' : '🛡 NAVAL INTEL';
         const domainColor = p.domain === 'SEA' ? '#4FC3F7' : p.domain === 'AIR' ? '#B3E5FC' : '#81D4FA';
         const linkStyle = 'text-decoration:none;padding:3px 8px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:0.05em;';
@@ -1456,7 +1456,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
             <div><span style="color:#5C5A54;">FROM</span><br/><span style="color:#E8E6E0;">${htmlEsc(p.fromName || 'Origin')}</span></div>
             <div><span style="color:#5C5A54;">TO</span><br/><span style="color:#E8E6E0;">${htmlEsc(p.toName || 'Destination')}</span></div>
             <div><span style="color:#5C5A54;">DOMAIN</span><br/><span style="color:${domainColor};">${p.domain}</span></div>
-            <div><span style="color:#5C5A54;">SOURCE</span><br/><a href="${urlSafe(srcUrl)}" target="_blank" style="color:${domainColor};text-decoration:underline;cursor:pointer;">${htmlEsc(p.source || 'OSIRIS')}</a></div>
+            <div><span style="color:#5C5A54;">SOURCE</span><br/><a href="${urlSafe(srcUrl)}" target="_blank" style="color:${domainColor};text-decoration:underline;cursor:pointer;">${htmlEsc(p.source || 'MUSASHI X')}</a></div>
           </div>
           <a href="${urlSafe(srcUrl)}" target="_blank" style="${linkStyle}color:${domainColor};border:1px solid ${domainColor}40;background:${domainColor}18;display:inline-block;margin-top:4px;">OPEN SOURCE ↗</a>
         </div>`);
@@ -1778,7 +1778,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         </div>
         <div style="color:#F2EFE8;font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:600;line-height:1.35;">${htmlEsc(p.title)}</div>
         <div style="margin-top:6px;font-size:9.5px;color:#8A8880;">${htmlEsc(p.source_name)}${p.lean ? ` · <span style="color:#9B978E;">${htmlEsc(p.lean)}</span>` : ''}</div>
-        <div style="margin-top:6px;font-size:9.5px;color:${c};" title="The place the post names, found in the place list built into OSIRIS. Town-level: a post names a place, not an exact spot.">📍 ${htmlEsc(p.place_label)}<span style="color:#5C5A54;"> · ${p.precision === 'region' ? 'region' : 'place'} named in the post · GeoNames</span></div>
+        <div style="margin-top:6px;font-size:9.5px;color:${c};" title="The place the post names, found in the place list built into MUSASHI X. Town-level: a post names a place, not an exact spot.">📍 ${htmlEsc(p.place_label)}<span style="color:#5C5A54;"> · ${p.precision === 'region' ? 'region' : 'place'} named in the post · GeoNames</span></div>
         ${media}
         ${link !== '#' ? `<a href="${link}" target="_blank" rel="noopener noreferrer" style="${linkStyle}color:${c};border:1px solid ${c}66;background:${c}1a;">OPEN POST ↗</a>` : ''}
         ${more ? `<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);"><div style="font-size:8.5px;letter-spacing:0.14em;color:#5C5A54;">ALSO HERE</div>${more}</div>` : ''}
@@ -2248,7 +2248,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
     setGeo('radiation', activeLayers.radiation && data.radiation ? data.radiation.map((r: any) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [r.lng, r.lat] }, properties: { name: r.name, city: r.city, country: r.country, reading: r.reading, status: r.status, network: r.network } })) : []);
   }, [mapReady, data.radiation, activeLayers.radiation, setGeo]);
 
-  // ══ OSIRIS SDK — Lattice Sensor Mesh ══
+  // ══ MUSASHI X SDK — Lattice Sensor Mesh ══
   // Uses real submarine cable data for SEA domain, curated routes for AIR/INTEL
   useEffect(() => {
     if (!mapReady) return;
@@ -2569,7 +2569,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
               'fog-color': '#04040A',
               'fog-ground-blend': 0.9,
             });
-          } catch (e) { console.warn('[OSIRIS] Suppressed error:', e instanceof Error ? e.message : e); }
+          } catch (e) { console.warn('[MUSASHI X] Suppressed error:', e instanceof Error ? e.message : e); }
         } else {
           if (map.getPitch() > 0.5) map.easeTo({ pitch: 0, duration: 350 });
         }
@@ -2644,9 +2644,9 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         const minHeight: maplibregl.ExpressionSpecification = ['coalesce', ['get', 'min_height'], ['get', 'render_min_height'], 0];
 
         // ── 3D BUILDING EXTRUSION LAYER ──
-        if (basemapBuildings && !map.getLayer('osiris-3d-buildings')) {
+        if (basemapBuildings && !map.getLayer('musashi-3d-buildings')) {
           map.addLayer({
-            id: 'osiris-3d-buildings',
+            id: 'musashi-3d-buildings',
             source: basemapBuildings.source,
             'source-layer': basemapBuildings['source-layer'],
             type: 'fill-extrusion',
@@ -2686,10 +2686,10 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
 
       } else {
         // ── DISABLE 3D ──
-        if (map.getLayer('osiris-3d-buildings')) map.removeLayer('osiris-3d-buildings');
+        if (map.getLayer('musashi-3d-buildings')) map.removeLayer('musashi-3d-buildings');
       }
     } catch (e) {
-      console.warn('[OSIRIS] 3D terrain toggle error:', e);
+      console.warn('[MUSASHI X] 3D terrain toggle error:', e);
     }
   }, [mapReady, activeLayers.terrain_3d]);
 
@@ -2774,7 +2774,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
     if (!map.getLayer('wind-credit')) map.addLayer({ id: 'wind-credit', type: 'circle', source: 'wind-credit' });
   }, [mapReady, activeLayers.wind, mapStyle]);
 
-  // OSIRIS OI — a prediction drawn as it happens: actors, the events of the
+  // MUSASHI X OI — a prediction drawn as it happens: actors, the events of the
   // simulated worlds and arcs through the sky (see lib/oi/globe). The page feeds it
   // run state directly, so the map does not re-render on every event; the
   // layer re-adds itself after a style change.
@@ -3251,7 +3251,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       syncLidarLayers(map, lidar, prevLidarRef.current);
       prevLidarRef.current = lidar ?? null;
     } catch (e) {
-      console.warn('[OSIRIS] lidar overlay failed:', e);
+      console.warn('[MUSASHI X] lidar overlay failed:', e);
     }
   }, [mapReady, lidar]);
 

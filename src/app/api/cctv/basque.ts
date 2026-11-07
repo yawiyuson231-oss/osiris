@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { createPool } from '@/lib/fetch-pool';
 
 /**
- * OSIRIS — Basque Country traffic cameras (Open Data Euskadi traffic API)
+ * MUSASHI X — Basque Country traffic cameras (Open Data Euskadi traffic API)
  * Source: https://api.euskadi.eus/traffic/v1.0/cameras — the Basque
  * Government's open traffic API, CC BY 4.0, no key.
  *
@@ -150,6 +150,6 @@ export async function fetchBasqueCameras(): Promise<CctvCamera[]> {
 
   const live = await Promise.all(cams.map(c => pool.run(() => isPublishing(c))));
   const kept = cams.filter((_, i) => live[i]);
-  console.log(`[OSIRIS] Basque cameras — Bizkaimove: ${kept.length} of ${cams.length} publishing`);
+  console.log(`[MUSASHI X] Basque cameras — Bizkaimove: ${kept.length} of ${cams.length} publishing`);
   return kept;
 }

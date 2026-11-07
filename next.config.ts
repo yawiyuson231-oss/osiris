@@ -87,7 +87,7 @@ const nextConfig: NextConfig = {
           // Other sites learn the origin a visitor came from, not the view they were on.
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           /* Location (directions, "near me") and the microphone (OI voice)
-             are used by OSIRIS itself and by nothing it embeds; the rest it
+             are used by MUSASHI X itself and by nothing it embeds; the rest it
              never asks for, so no page or embed can. */
           { key: 'Permissions-Policy', value: 'geolocation=(self), microphone=(self), camera=(), payment=(), usb=(), display-capture=()' },
         ],

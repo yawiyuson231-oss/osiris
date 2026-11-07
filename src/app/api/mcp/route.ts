@@ -5,7 +5,7 @@ import {
 import { credentials, disabled, limited, siteOrigin } from '@/lib/oi/service';
 
 /**
- * OSIRIS MCP server — Streamable HTTP, stateless.
+ * MUSASHI X MCP server — Streamable HTTP, stateless.
  *
  *   POST /api/mcp   one JSON-RPC message (or a batch, for 2025-03-26 clients)
  *   GET  /api/mcp   405: this server does not open server-initiated streams

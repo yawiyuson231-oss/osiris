@@ -19,7 +19,7 @@ import {
 } from './wind-streamlines';
 
 /**
- * OSIRIS — wind drawn on the GPU, as streamlines.
+ * MUSASHI X — wind drawn on the GPU, as streamlines.
  *
  * Every curve is a fine, steady line in pale blue. A bright comet runs along
  * each one, tapering away behind it, so the whole map reads as the air moving
@@ -323,7 +323,7 @@ export function createWindGlLayer(): WindGlLayer {
       if (fade <= 0) return;
       let program: WebGLProgram;
       try { program = programs.get(shader, 'marker'); } catch (err) {
-        console.error('[OSIRIS] wind layer:', err instanceof Error ? err.message : err);
+        console.error('[MUSASHI X] wind layer:', err instanceof Error ? err.message : err);
         return;
       }
 

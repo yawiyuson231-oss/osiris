@@ -20,11 +20,11 @@ import {
 } from '@/lib/markets';
 
 /**
- * OSIRIS — the markets terminal.
+ * MUSASHI X — the markets terminal.
  *
  * Driven the way a market terminal is — a command line that takes a ticker or
  * a function code, numbered function keys, one dense monitor — and dressed in
- * OSIRIS's own glass, gold and theme colours, so it sits with RECON and the
+ * MUSASHI X's own glass, gold and theme colours, so it sits with RECON and the
  * rest of the HUD rather than apart from them. The monitor widens to more
  * columns as the panel does: price and move docked; net change, day range,
  * 52-week position, last trade and volume in full screen.
@@ -624,7 +624,7 @@ export default function MarketsPanel({ data, spaceWeather }: MarketsPanelProps) 
           <div className="flex items-center justify-between gap-4 px-6 py-3.5 border-b border-[var(--border-secondary)] bg-[#111] shrink-0">
             <div className="flex items-center gap-3 min-w-0">
               <BarChart3 className="w-5 h-5 shrink-0" style={{ color: T.accent }} />
-              <span className="hud-text text-[16px] text-[var(--text-primary)] whitespace-nowrap">OSIRIS MARKETS</span>
+              <span className="hud-text text-[16px] text-[var(--text-primary)] whitespace-nowrap">MUSASHI X MARKETS</span>
               <span className="gotham-tag gotham-tag--classified" style={{ fontSize: '9px' }}>{allQuotes.length} INSTRUMENTS</span>
               <span className="text-[var(--text-muted)]/40">/</span>
               <span className="text-[11px] font-mono font-bold tracking-wider truncate" style={{ color: T.accent }}>

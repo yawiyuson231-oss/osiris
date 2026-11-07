@@ -32,8 +32,8 @@ describe('the run store', () => {
     expect(getRun(run.id)).toBe(run);
     await waitForEnd(run, 10_000);
     expect(run.state.status).toBe('done');
-    const summary = runSummary(run, 'https://osirisai.live');
-    expect(summary).toMatchObject({ status: 'done', watch_url: `https://osirisai.live/?oi=${run.id}`, depth: 'quick' });
+    const summary = runSummary(run, 'https://musashi-x.app');
+    expect(summary).toMatchObject({ status: 'done', watch_url: `https://musashi-x.app/?oi=${run.id}`, depth: 'quick' });
     expect(summary.report?.probability_pct).toBeGreaterThan(0);
     const flat = JSON.stringify(summary);
     expect(flat).not.toContain('sk-test');

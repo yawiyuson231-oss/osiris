@@ -1,5 +1,5 @@
 /**
- * OSIRIS — the wind field, read from NOAA's GFS model.
+ * MUSASHI X — the wind field, read from NOAA's GFS model.
  *
  * NOMADS hands out the global forecast keyless as GRIB2, cut down to the two
  * fields we want: the eastward (UGRD) and northward (VGRD) wind ten metres up,

@@ -35,7 +35,7 @@ import { modeForRouteType } from '../src/lib/transit.ts';
 const CATALOGUE = 'https://storage.googleapis.com/storage/v1/b/mdb-csv/o/sources.csv?alt=media';
 const OUT_FEEDS = fileURLToPath(new URL('../src/lib/transit-feeds.generated.ts', import.meta.url));
 const OUT_ROUTES = fileURLToPath(new URL('../src/lib/transit-routes.generated.ts', import.meta.url));
-const UA = 'OSIRIS-Transit/1.0 (+https://osirisai.live)';
+const UA = 'MUSASHI X-Transit/1.0 (+https://musashi-x.app)';
 const TIMEOUT_MS = 20_000;
 const CONCURRENCY = 16;
 /** Positions older than this at probe time mean the feed has stopped updating. */
@@ -376,7 +376,7 @@ console.log(Object.entries(reasons).sort((a, b) => b[1] - a[1]).slice(0, 12));
 writeFileSync(OUT_FEEDS, `import type { TransitFeed } from './transit';
 
 /**
- * OSIRIS — live, keyless GTFS-Realtime vehicle-position feeds (GENERATED).
+ * MUSASHI X — live, keyless GTFS-Realtime vehicle-position feeds (GENERATED).
  *
  * Built by tools/generate-transit-feeds.mjs on ${new Date().toISOString().slice(0, 10)} from the Mobility
  * Database catalogue (https://mobilitydatabase.org) plus a few feeds it lacks.
@@ -420,7 +420,7 @@ if (WITH_ROUTES) {
   });
   const json = JSON.stringify(table);
   writeFileSync(OUT_ROUTES, `/**
- * OSIRIS — route names and modes for the live-transit feeds (GENERATED).
+ * MUSASHI X — route names and modes for the live-transit feeds (GENERATED).
  *
  * From each feed's GTFS timetable (routes.txt), read by
  * tools/generate-transit-feeds.mjs --routes on ${new Date().toISOString().slice(0, 10)}. Keyed by feed URL

@@ -276,7 +276,7 @@ describe('lookups from the browser', () => {
     expect(found.map(f => f.name).slice(0, 2)).toEqual(['Lisbon', 'Lisbon Airport']);
     const wikimedia = asked('https://');
     expect(wikimedia).toHaveLength(2);
-    for (const [, init] of wikimedia) expect(init.headers['Api-User-Agent']).toContain('OSIRIS');
+    for (const [, init] of wikimedia) expect(init.headers['Api-User-Agent']).toContain('MUSASHI X');
   });
 
   it('answers from the built-in list when both sites are out of reach', async () => {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Builds public/places.json, the place list OSIRIS looks places up in
+ * Builds public/places.json, the place list MUSASHI X looks places up in
  * without asking any outside service (see src/lib/places.ts).
  *
  * From GeoNames (https://www.geonames.org, CC BY 4.0): every town and city of

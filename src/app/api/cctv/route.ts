@@ -69,7 +69,7 @@ import {
 } from './public-webcams';
 
 /**
- * OSIRIS — Worldwide CCTV Camera API v2
+ * MUSASHI X — Worldwide CCTV Camera API v2
  * Viewport-aware: pass ?region=xx to load cameras for specific regions
  * Supports: uk, us-east, us-west, us-central, canada, europe, asia
  * Or pass ?lat=x&lng=y&radius=5 for proximity-based loading
@@ -131,12 +131,12 @@ async function subSource(label: string, url: string, timeoutMs: number) {
          — Montreal (403) and Alberta (400) between them pushed Canada past
          12s, so the whole country came back empty on a cold cache. */
       if (res.status >= 400 && res.status < 500) {
-        console.warn(`[OSIRIS] ${label} returned ${res.status} — absent from this refresh, not retried`);
+        console.warn(`[MUSASHI X] ${label} returned ${res.status} — absent from this refresh, not retried`);
         return null;
       }
-      if (attempt === 2) console.warn(`[OSIRIS] ${label} returned ${res.status} — absent from this refresh`);
+      if (attempt === 2) console.warn(`[MUSASHI X] ${label} returned ${res.status} — absent from this refresh`);
     } catch (e) {
-      if (attempt === 2) console.warn(`[OSIRIS] ${label} failed — absent from this refresh:`, e instanceof Error ? e.message : e);
+      if (attempt === 2) console.warn(`[MUSASHI X] ${label} failed — absent from this refresh:`, e instanceof Error ? e.message : e);
     }
   }
   return null;
@@ -326,7 +326,7 @@ async function fetchEuropeCameras(): Promise<any[]> {
   try {
     cams.push(...await fetchNetherlandsCameras());
   } catch (e) {
-    console.warn('[OSIRIS] Netherlands cameras failed — absent from this refresh:', e instanceof Error ? e.message : e);
+    console.warn('[MUSASHI X] Netherlands cameras failed — absent from this refresh:', e instanceof Error ? e.message : e);
   }
 
   cams.push(...await fetchAsfinagCameras());
@@ -580,7 +580,7 @@ function refreshRegion(region: string): Promise<any[]> {
         new Promise<any[]>(resolve => {
           timer = setTimeout(() => {
             timedOut = true;
-            console.warn(`[OSIRIS] cctv:${region} over ${budgetMs}ms — backing off for 300s`);
+            console.warn(`[MUSASHI X] cctv:${region} over ${budgetMs}ms — backing off for 300s`);
             backedOff.set(region, Date.now() + BACKOFF_MS);
             resolve([]);
           }, budgetMs);
@@ -658,7 +658,7 @@ async function persistCatalogue() {
   try {
     await writeSnapshot(currentRegions());
   } catch (error) {
-    console.warn('[OSIRIS] Could not save the camera catalogue:', error);
+    console.warn('[MUSASHI X] Could not save the camera catalogue:', error);
   }
 }
 
@@ -689,8 +689,8 @@ function ensureRestored(): Promise<void> {
     }
     rebuildPayload();
     lastPersistedTotal = cameras;
-    console.log(`[OSIRIS] Camera catalogue restored: ${cameras} cameras from disk`);
-  })().catch(error => { console.warn('[OSIRIS] Could not restore the camera catalogue:', error); });
+    console.log(`[MUSASHI X] Camera catalogue restored: ${cameras} cameras from disk`);
+  })().catch(error => { console.warn('[MUSASHI X] Could not restore the camera catalogue:', error); });
   return restoring;
 }
 
@@ -744,7 +744,7 @@ async function collectRegions(regions: string[]): Promise<{ cameras: Record<stri
   clearTimeout(timer);
 
   const pending = missing.filter(region => !cameras[region]);
-  if (pending.length) console.warn(`[OSIRIS] cctv still filling: ${pending.join(", ")}`);
+  if (pending.length) console.warn(`[MUSASHI X] cctv still filling: ${pending.join(", ")}`);
   return { cameras, pending };
 }
 
@@ -905,7 +905,7 @@ function rebuildInBackground() {
     await collectRegions(ALL_REGIONS());
     rebuildPayload();
     await persistCatalogue();
-  })().catch(error => { console.warn('[OSIRIS] Camera catalogue rebuild failed:', error); })
+  })().catch(error => { console.warn('[MUSASHI X] Camera catalogue rebuild failed:', error); })
     .finally(() => { rebuilding = undefined; });
   return rebuilding;
 }

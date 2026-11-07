@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { createPool } from '@/lib/fetch-pool';
 
 /**
- * OSIRIS — French departmental road cameras on the Inforoute platform.
+ * MUSASHI X — French departmental road cameras on the Inforoute platform.
  *
  * Around twenty départements run their road-conditions site on the same
  * Logipro "Inforoute" software (inforoute21.fr, inforoutes06.fr,
@@ -135,7 +135,7 @@ export async function fetchInforouteCameras(): Promise<CctvCamera[]> {
   const cams: CctvCamera[] = [];
   results.forEach((r, i) => {
     if (r.status === 'fulfilled') cams.push(...r.value);
-    else console.warn(`[OSIRIS] Inforoute ${SITES[i].department} failed — absent from this refresh:`, r.reason instanceof Error ? r.reason.message : r.reason);
+    else console.warn(`[MUSASHI X] Inforoute ${SITES[i].department} failed — absent from this refresh:`, r.reason instanceof Error ? r.reason.message : r.reason);
   });
   return cams;
 }

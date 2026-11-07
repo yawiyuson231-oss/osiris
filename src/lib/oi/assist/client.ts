@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI Assist: the conversation, in the page.
+ * MUSASHI X OI Assist: the conversation, in the page.
  *
  * Holds what has been said and done, runs a turn against the server and the
  * map (agent.converse), and shows each step as it happens: what OI said, each
@@ -38,7 +38,7 @@ export interface AssistDeps {
   onReply?: (text: string) => void;
 }
 
-const STORE = 'osiris.oi.assist';
+const STORE = 'musashi.oi.assist';
 const MAX_ENTRIES = 80;
 
 function load(): { entries: Entry[]; history: AssistMessage[] } {

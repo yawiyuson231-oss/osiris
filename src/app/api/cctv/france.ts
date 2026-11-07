@@ -171,7 +171,7 @@ export async function fetchFranceCameras(): Promise<CctvCamera[]> {
   const cams: CctvCamera[] = [...YOUTUBE_LIVE, ...SKYLINE_FRANCE];
   results.forEach((r, i) => {
     if (r.status === 'fulfilled') cams.push(...r.value);
-    else console.warn(`[OSIRIS] France ${LIVE_SOURCES[i][0]} failed — absent from this refresh:`, r.reason instanceof Error ? r.reason.message : r.reason);
+    else console.warn(`[MUSASHI X] France ${LIVE_SOURCES[i][0]} failed — absent from this refresh:`, r.reason instanceof Error ? r.reason.message : r.reason);
   });
   return cams;
 }

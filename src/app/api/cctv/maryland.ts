@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { cachedSource } from '@/lib/sourceCache';
 
 /**
- * OSIRIS — Maryland traffic cameras (MDOT SHA CHART)
+ * MUSASHI X — Maryland traffic cameras (MDOT SHA CHART)
  * Source: https://chart.maryland.gov — the state's Coordinated Highways Action
  * Response Team, which also runs 511 (md511.maryland.gov redirects here).
  * ~550 live HLS streams statewide — NO API KEY NEEDED.
@@ -119,7 +119,7 @@ async function loadMarylandCameras(): Promise<CctvCamera[]> {
   if (!res.ok) throw new Error(`CHART camera feed HTTP ${res.status}`);
 
   const cams = parseMaryland(await res.json());
-  console.log(`[OSIRIS] Maryland cameras — CHART: ${cams.length}`);
+  console.log(`[MUSASHI X] Maryland cameras — CHART: ${cams.length}`);
   return cams;
 }
 

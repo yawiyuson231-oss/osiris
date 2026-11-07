@@ -1,5 +1,5 @@
 /**
- * The live world a run starts from: OSIRIS's own news feed, the day's large
+ * The live world a run starts from: MUSASHI X's own news feed, the day's large
  * earthquakes and a line of market prices, cut down to what bears on the
  * question. Read in-process from the same cached sources the map uses, so a
  * run adds no upstream traffic of its own. The feed carries posts from public
@@ -140,7 +140,7 @@ export function selectContext(
 
   const board = marketLine(data.quotes);
   if (board) {
-    items.push({ id: `c${items.length + 1}`, kind: 'market', title: board, source: 'OSIRIS Markets', published: new Date(now).toISOString(), place: '', lat: null, lng: null });
+    items.push({ id: `c${items.length + 1}`, kind: 'market', title: board, source: 'MUSASHI X Markets', published: new Date(now).toISOString(), place: '', lat: null, lng: null });
   }
   return items;
 }
@@ -216,6 +216,6 @@ export async function briefing(topic: string, limit: number, sources: Sources = 
     });
   }
   const board = marketLine(quotes);
-  if (board) items.push({ id: `c${items.length + 1}`, kind: 'market', title: board, source: 'OSIRIS Markets', published: new Date(now).toISOString(), place: '', lat: null, lng: null });
+  if (board) items.push({ id: `c${items.length + 1}`, kind: 'market', title: board, source: 'MUSASHI X Markets', published: new Date(now).toISOString(), place: '', lat: null, lng: null });
   return items;
 }

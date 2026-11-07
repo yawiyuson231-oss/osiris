@@ -1,5 +1,5 @@
 /**
- * OSIRIS OI on the globe.
+ * MUSASHI X OI on the globe.
  *
  * While a run thinks, its analysis draws itself on the map: the actors land
  * where they act, their relations rise as arcs through the sky, evidence from
@@ -624,7 +624,7 @@ export function createArcLayer(id: string = OI_ARCS): CustomLayerInterface & {
       if (!proj || !args.shaderData?.vertexShaderPrelude) return;
       let set: Programs;
       try { set = programsFor(args.shaderData); }
-      catch (err) { console.error('[OSIRIS] OI layer:', err instanceof Error ? err.message : err); return; }
+      catch (err) { console.error('[MUSASHI X] OI layer:', err instanceof Error ? err.message : err); return; }
       lastProjection = proj;
       lastShader = args.shaderData;
       if (arcsDirty) { buildArcs(); arcsDirty = false; }

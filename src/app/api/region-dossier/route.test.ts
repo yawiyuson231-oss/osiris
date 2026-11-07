@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 
 // Faked so a test can tell the route asks no outside service for the place.
 const httpJson = vi.fn();
-vi.mock('@/lib/httpJson', () => ({ httpJson: (...args: unknown[]) => httpJson(...args), OSIRIS_UA: 'test' }));
+vi.mock('@/lib/httpJson', () => ({ httpJson: (...args: unknown[]) => httpJson(...args), MUSASHI_UA: 'test' }));
 
 import { current, stillHolding, itemId, amountOf, placeAt, type WdStatement } from './route';
 

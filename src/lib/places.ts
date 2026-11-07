@@ -1,5 +1,5 @@
 /**
- * OSIRIS — the built-in place list: towns, countries and regions, looked up
+ * MUSASHI X — the built-in place list: towns, countries and regions, looked up
  * without asking any outside service.
  *
  * public/places.json comes from GeoNames (CC BY 4.0) through

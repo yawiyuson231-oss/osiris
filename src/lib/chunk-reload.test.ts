@@ -20,7 +20,7 @@ describe('isChunkLoadError', () => {
   });
 
   it('recognises the browsers’ own wording for a failed dynamic import', () => {
-    expect(isChunkLoadError(new TypeError('Failed to fetch dynamically imported module: https://osirisai.live/_next/static/chunks/a.js'))).toBe(true);
+    expect(isChunkLoadError(new TypeError('Failed to fetch dynamically imported module: https://musashi-x.app/_next/static/chunks/a.js'))).toBe(true);
     expect(isChunkLoadError(new TypeError('Importing a module script failed.'))).toBe(true);
     expect(isChunkLoadError(new Error('Loading chunk 412 failed.'))).toBe(true);
   });

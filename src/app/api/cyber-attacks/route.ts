@@ -14,7 +14,7 @@ import { locateIps } from '@/lib/malware-live';
 export const dynamic = 'force-dynamic';
 
 /**
- * OSIRIS — botnet C2 indicators: abuse.ch Feodo Tracker, plus the addresses
+ * MUSASHI X — botnet C2 indicators: abuse.ch Feodo Tracker, plus the addresses
  * security researchers posted as #C2 or #botnet in the last 30 days
  * (TweetFeed). See `@/lib/c2-indicators` for what each source is.
  *
@@ -26,7 +26,7 @@ export const dynamic = 'force-dynamic';
  * centroid, and a post that cannot be located is left out, since it names no
  * country at all.
  *
- * `fetched_at` is when OSIRIS polled the providers. It is not an observation
+ * `fetched_at` is when MUSASHI X polled the providers. It is not an observation
  * time — those are each indicator's `first_seen` and `last_online`.
  */
 
@@ -62,7 +62,7 @@ async function feodo(): Promise<C2Indicator[]> {
   const res = await fetch('https://feodotracker.abuse.ch/downloads/ipblocklist.json', {
     signal: AbortSignal.timeout(10000),
     cache: 'no-store',
-    headers: { 'User-Agent': 'OSIRIS/4.3', Accept: 'application/json' },
+    headers: { 'User-Agent': 'MUSASHI X/4.3', Accept: 'application/json' },
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return parseFeodoBlocklist(await res.json());
@@ -73,7 +73,7 @@ async function tweetFeedC2(now: number): Promise<C2Indicator[]> {
     signal: AbortSignal.timeout(20000),
     cache: 'no-store',
     headers: {
-      'User-Agent': 'OSIRIS/4.3',
+      'User-Agent': 'MUSASHI X/4.3',
       Accept: 'text/csv',
       ...(tweetFeed?.etag ? { 'If-None-Match': tweetFeed.etag } : {}),
     },
@@ -97,7 +97,7 @@ export async function GET() {
   try {
     const [listed, posted] = await Promise.allSettled([feodo(), tweetFeedC2(now)]);
     if (listed.status === 'rejected' && posted.status === 'rejected') {
-      console.warn('[OSIRIS] C2 indicator feeds failed:', reason(listed), reason(posted));
+      console.warn('[MUSASHI X] C2 indicator feeds failed:', reason(listed), reason(posted));
       // An upstream blip must not empty a layer that was showing something.
       if (cached) return NextResponse.json(cached, { headers: CACHE_HEADERS });
       return NextResponse.json({ indicators: [], total: 0, online: 0, error: 'C2 feeds unavailable' });
@@ -130,7 +130,7 @@ export async function GET() {
 
     return NextResponse.json(result, { headers: CACHE_HEADERS });
   } catch (error) {
-    console.error('[OSIRIS] C2 indicator feed error:', error);
+    console.error('[MUSASHI X] C2 indicator feed error:', error);
     return NextResponse.json({ indicators: [], total: 0, online: 0, error: 'Feed unavailable' }, { status: 500 });
   }
 }

@@ -1,5 +1,5 @@
 /**
- * OSIRIS OI, the camera.
+ * MUSASHI X OI, the camera.
  *
  * A run has a shape, and the camera follows it like a director would:
  *

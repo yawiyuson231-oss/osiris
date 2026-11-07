@@ -1,5 +1,5 @@
 /**
- * OSIRIS — Live transit playback: vehicles that move the way they moved.
+ * MUSASHI X — Live transit playback: vehicles that move the way they moved.
  *
  * A feed reports each vehicle every 10 to 60 seconds. Drawn as reported, a bus
  * jumps from fix to fix. Guessed forward from its speed and heading, it drives

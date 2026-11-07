@@ -58,8 +58,8 @@ interface Store {
   starts: Map<string, number[]>;
 }
 
-const g = globalThis as unknown as { __osirisOi?: Store };
-const store: Store = (g.__osirisOi ??= { runs: new Map(), starts: new Map() });
+const g = globalThis as unknown as { __musashiOi?: Store };
+const store: Store = (g.__musashiOi ??= { runs: new Map(), starts: new Map() });
 
 export interface StartInput {
   question: string;
@@ -230,7 +230,7 @@ export function subscribe(run: Run, after: number, listener: (e: Stamped) => voi
 }
 
 const MAX_WAITS_PER_IP = 6;
-const waits = ((globalThis as unknown as { __osirisOiWaits?: Map<string, number> }).__osirisOiWaits ??= new Map());
+const waits = ((globalThis as unknown as { __musashiOiWaits?: Map<string, number> }).__musashiOiWaits ??= new Map());
 
 /**
  * A slot for one held-open wait (a long-poll, an MCP call waiting on a run),

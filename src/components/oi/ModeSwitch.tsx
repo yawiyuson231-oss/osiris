@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI: Forecast or Assist.
+ * MUSASHI X OI: Forecast or Assist.
  *
  * The two ways to use OI as one compact switch, each in its own colour so it
  * is never in doubt which is showing: Forecast in gold, Assist in blue. Each

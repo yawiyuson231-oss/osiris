@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI: the workspace.
+ * MUSASHI X OI: the workspace.
  *
  * Full screen, OI becomes a command centre in the manner of an analysis
  * platform, with or without a forecast:

@@ -11,17 +11,17 @@ import { ChevronDown, Coffee, ShoppingBag } from 'lucide-react';
  */
 const OPTIONS = [
   {
-    href: 'https://ko-fi.com/M8D41ZYW4Z',
+    href: '#',
     Icon: Coffee,
-    label: 'SUPPORT ON KO-FI',
-    detail: 'Tip once or monthly',
+    label: 'SUPPORT MUSASHI X',
+    detail: 'Support the project',
     color: 'var(--gold-primary)',
   },
   {
-    href: 'https://shop.osirisai.live/',
+    href: '#',
     Icon: ShoppingBag,
-    label: 'BUY MERCH',
-    detail: 'shop.osirisai.live',
+    label: 'MUSASHI X STORE',
+    detail: 'musashi-x.app',
     color: 'var(--cyan-primary)',
   },
 ] as const;
@@ -66,7 +66,7 @@ export default function SupportMenu({ compact = false }: { compact?: boolean }) 
           compact ? 'px-2 py-1' : 'px-3 py-1.5 shadow-[0_0_10px_rgba(255,215,0,0.1)]'
         }`}
       >
-        <div className={`${compact ? 'w-1 h-1' : 'w-1.5 h-1.5'} rounded-full bg-[var(--gold-primary)] animate-osiris-pulse`} />
+        <div className={`${compact ? 'w-1 h-1' : 'w-1.5 h-1.5'} rounded-full bg-[var(--gold-primary)] animate-musashi-pulse`} />
         <span className="text-[var(--gold-primary)] font-bold">SUPPORT</span>
         <ChevronDown
           className={`w-2.5 h-2.5 text-[var(--gold-primary)] transition-transform ${open ? 'rotate-180' : ''}`}

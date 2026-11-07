@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI: the prediction. The report agent's headline and the story under
+ * MUSASHI X OI: the prediction. The report agent's headline and the story under
  * it: how it most likely unfolds, date by date, what each actor does, how
  * each simulated world ended, the drivers and the evidence behind them,
  * scenarios, signposts and dissent. Every part is a way into the research.

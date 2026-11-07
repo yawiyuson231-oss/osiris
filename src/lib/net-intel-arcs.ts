@@ -1,5 +1,5 @@
 /**
- * OSIRIS — Network Intel's links, drawn with OI's arcs.
+ * MUSASHI X — Network Intel's links, drawn with OI's arcs.
  *
  * Each C2 host on the Live Malware layer is joined to the hosts running the
  * same malware family, as a minimum spanning tree over great-circle distance:

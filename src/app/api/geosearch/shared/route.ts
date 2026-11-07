@@ -5,9 +5,9 @@ import { GET as search } from '../route';
 export const maxDuration = 20;
 
 /**
- * OSIRIS — this deployment's geocoder, shared with copies that have none.
+ * MUSASHI X — this deployment's geocoder, shared with copies that have none.
  *
- * A copy of OSIRIS without OSIRIS_GEOCODER_URL asks here from its server (sharedSearch
+ * A copy of MUSASHI X without MUSASHI_GEOCODER_URL asks here from its server (sharedSearch
  * in lib/geocoder.ts), so someone running it on their own machine searches the
  * same streets and addresses with nothing to set up. It answers only from
  * this deployment's own geocoder, with only the query and the bias passed on,

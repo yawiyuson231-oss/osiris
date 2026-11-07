@@ -2,7 +2,7 @@ import type { CctvCamera } from './types';
 import { cachedSource } from '@/lib/sourceCache';
 
 /**
- * OSIRIS — Virginia traffic cameras (VDOT 511)
+ * MUSASHI X — Virginia traffic cameras (VDOT 511)
  * Source: https://511.vdot.virginia.gov — the state's own 511 map.
  * ~1,700 live HLS streams statewide — NO API KEY NEEDED.
  *
@@ -112,7 +112,7 @@ async function loadVirginiaCameras(): Promise<CctvCamera[]> {
   if (!res.ok) throw new Error(`VDOT 511 cams layer HTTP ${res.status}`);
 
   const cams = parseVirginia(await res.json());
-  console.log(`[OSIRIS] Virginia cameras — VDOT 511: ${cams.length}`);
+  console.log(`[MUSASHI X] Virginia cameras — VDOT 511: ${cams.length}`);
   return cams;
 }
 

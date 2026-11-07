@@ -1,5 +1,5 @@
 /**
- * OSIRIS — recovering from a code chunk that no longer exists.
+ * MUSASHI X — recovering from a code chunk that no longer exists.
  *
  * Panels such as the market chart are split into chunks that load on first
  * use. A page still running an earlier build — a tab left open across a
@@ -17,7 +17,7 @@ export function isChunkLoadError(error: unknown): boolean {
     || /Failed to load chunk|Loading chunk [\w-]+ failed|Failed to fetch dynamically imported module|Importing a module script failed/i.test(error.message);
 }
 
-const KEY = 'osiris:chunk-reload';
+const KEY = 'musashi:chunk-reload';
 /** A chunk still missing this soon after a reload is not a stale page; reloading again would loop. */
 const WINDOW_MS = 60_000;
 

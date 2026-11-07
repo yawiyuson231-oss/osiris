@@ -8,7 +8,7 @@ import {
 export const metadata: Metadata = {
   title: 'Privacy',
   description:
-    'Privacy at OSIRIS, in plain words: no accounts, no tracking, your settings on your device, and exactly which services hear from us when you use a feature.',
+    'Privacy at MUSASHI X, in plain words: no accounts, no tracking, your settings on your device, and exactly which services hear from us when you use a feature.',
   alternates: { canonical: '/privacy' },
 };
 
@@ -110,14 +110,14 @@ export default function PrivacyPage() {
     <main className="docs-root min-h-screen bg-[var(--bg-primary)] px-5 py-14 text-[var(--text-primary)] sm:px-6">
       <div className="mx-auto max-w-3xl">
         <Link href="/" className="font-mono text-[11px] tracking-widest text-[var(--text-muted)] hover:text-[var(--cyan-primary)]">
-          ← OSIRIS
+          ← MUSASHI X
         </Link>
 
         <header className="mt-8">
           <p className="font-mono text-[11px] tracking-[0.25em] text-[var(--gold-primary)]">PRIVACY</p>
           <h1 className="mt-2 text-3xl font-bold tracking-wide sm:text-4xl">Privacy, in plain words</h1>
           <p className="mt-4 text-[15px] leading-relaxed text-[var(--text-muted)]">
-            OSIRIS is a window onto public information: flights, ships, cameras, news, markets and more, gathered onto
+            MUSASHI X is a window onto public information: flights, ships, cameras, news, markets and more, gathered onto
             one map. We built it so you can use it without telling us who you are. This page says what that means in
             practice, and, where a feature needs to ask another service for something, exactly which one.
           </p>
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section id="services" title="When we reach out to other services"
-          intro="OSIRIS does not keep a database of intelligence of its own: it asks public services in real time. Here is what that involves, by what you are doing. Each service treats what it receives under its own privacy policy.">
+          intro="MUSASHI X does not keep a database of intelligence of its own: it asks public services in real time. Here is what that involves, by what you are doing. Each service treats what it receives under its own privacy policy.">
           <div className="flex flex-col gap-3">
             <Flow icon={<MapIcon className="h-4 w-4" />} title="Opening the map"
               summary={<>
@@ -171,8 +171,8 @@ export default function PrivacyPage() {
                 { name: 'ipapi.co, then freeipapi.com, then ip-api.com', what: 'your connection’s IP address, asked from our server, to place the map' },
                 { name: 'CARTO (basemaps.cartocdn.com)', what: 'the map tiles for the part of the world in view' },
                 { name: 'Esri (server.arcgisonline.com)', what: 'satellite imagery, only when you switch to the satellite view' },
-                { name: 'Wikipedia and Wikidata (en.wikipedia.org, www.wikidata.org)', what: 'what you type in the place search, asked from your browser, only when our own place search server cannot answer. The place under your cursor or that you right-click is named from a list built into OSIRIS, and nothing is sent for it' },
-                { name: 'osirisai.live', what: 'on a copy of OSIRIS that runs no place search server of its own, what you type in the place search, sent from that copy’s server to our place search server' },
+                { name: 'Wikipedia and Wikidata (en.wikipedia.org, www.wikidata.org)', what: 'what you type in the place search, asked from your browser, only when our own place search server cannot answer. The place under your cursor or that you right-click is named from a list built into MUSASHI X, and nothing is sent for it' },
+                { name: 'musashi-x.app', what: 'on a copy of MUSASHI X that runs no place search server of its own, what you type in the place search, sent from that copy’s server to our place search server' },
                 { name: 'Google Fonts', what: 'the typefaces the site uses' },
               ]} />
 
@@ -255,7 +255,7 @@ export default function PrivacyPage() {
             <li><span className="text-[var(--text-primary)]">Clear everything</span> by clearing this site’s data in your browser settings.</li>
             <li><span className="text-[var(--text-primary)]">Keep your AI key to one session</span> by leaving “Remember on this device” unticked; it is then forgotten when the tab closes.</li>
             <li><span className="text-[var(--text-primary)]">Use only what you need</span>: map layers, cameras and AI features reach out only when you switch them on or use them.</li>
-            <li><span className="text-[var(--text-primary)]">Run your own copy</span>: OSIRIS is open source, so you can host it yourself and decide who operates it.</li>
+            <li><span className="text-[var(--text-primary)]">Run your own copy</span>: MUSASHI X is open source, so you can host it yourself and decide who operates it.</li>
           </ul>
         </Section>
 
@@ -264,13 +264,13 @@ export default function PrivacyPage() {
             If something here is unclear, or you think we have missed something, tell us and we will put it right.
           </p>
           <div className="mt-4 flex flex-wrap gap-2.5">
-            <a href="https://github.com/simplifaisoul/osiris/issues" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/musashi-x/musashi-x/issues" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-[var(--border-primary)] px-3.5 py-2 text-[13px] hover:border-[var(--cyan-primary)] hover:text-[var(--cyan-primary)]">
               <ExternalLink className="h-4 w-4" /> Open an issue on GitHub
             </a>
-            <a href="https://discord.gg/umBykEpb98" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/musashi-x/musashi-x" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-[var(--border-primary)] px-3.5 py-2 text-[13px] hover:border-[var(--cyan-primary)] hover:text-[var(--cyan-primary)]">
-              <MessageCircle className="h-4 w-4" /> Ask on Discord
+              <MessageCircle className="h-4 w-4" /> Contact via GitHub
             </a>
           </div>
         </Section>

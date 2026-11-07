@@ -6,7 +6,7 @@ import type { Bloc } from '@/lib/alert-digest';
 import { alertKind, locateReport, type AlertKind, type AlertPlace } from '@/lib/alert-places';
 
 /**
- * OSIRIS — Live Alerts news feed.
+ * MUSASHI X — Live Alerts news feed.
  *
  * Reads two kinds of source into one feed: public Telegram OSINT channels,
  * which are fast and carry footage, and wire services, which cover the ground

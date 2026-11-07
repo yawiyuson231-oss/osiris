@@ -1,7 +1,7 @@
 import type { TransitFeed } from './transit';
 
 /**
- * OSIRIS — live transit feeds that need a (free) key.
+ * MUSASHI X — live transit feeds that need a (free) key.
  *
  * Each is switched on by setting its environment variable on the server; the
  * key never leaves the server. Without the variable the feed is not listed,

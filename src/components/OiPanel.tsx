@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI: the panel.
+ * MUSASHI X OI: the panel.
  *
  * Two ways to use OI, on the reader's own model key. Assist (the default)
  * is a conversation: talk to OI and it works the map for you (flies there,

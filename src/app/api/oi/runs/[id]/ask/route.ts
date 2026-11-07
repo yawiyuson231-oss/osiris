@@ -2,7 +2,7 @@ import { getRun } from '@/lib/oi/runs';
 import { askPrediction, credentials, disabled, disabledResponse, fail, json, limited, readBody } from '@/lib/oi/service';
 
 /**
- * OSIRIS OI — talk to the simulation after (or during) a run.
+ * MUSASHI X OI — talk to the simulation after (or during) a run.
  *
  * POST /api/oi/runs/{id}/ask
  *   headers  X-OI-Key (or Authorization: Bearer); X-OI-Provider and X-OI-Model default to the run's

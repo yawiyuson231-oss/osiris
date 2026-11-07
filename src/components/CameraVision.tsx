@@ -9,7 +9,7 @@ import { identityWords, pickVehicles, type Identity } from '@/lib/vision/identif
 import { clearLook, identifyVehicles, look, prime, sourceOf, useLook, type Look, type VisionCamera } from '@/lib/vision/store';
 
 /**
- * OSIRIS — AI Analyze on a camera.
+ * MUSASHI X — AI Analyze on a camera.
  *
  * AI Analyze counts what is in the current frame and reads each vehicle's
  * colour; Watch follows the feed for half a minute and reports how it changed.

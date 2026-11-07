@@ -1,6 +1,6 @@
 'use client';
 /**
- * OSIRIS OI: a run at a glance: where it is, its controls, and the
+ * MUSASHI X OI: a run at a glance: where it is, its controls, and the
  * prediction so far with how it got there and where each world stands.
  */
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';

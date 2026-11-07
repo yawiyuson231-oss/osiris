@@ -1,8 +1,8 @@
 /**
- * OSIRIS vision on the main thread: getting a camera's frame, and handing it
+ * MUSASHI X vision on the main thread: getting a camera's frame, and handing it
  * to the detector in its worker (vision.worker.ts).
  *
- * A still camera's frame comes from /api/cctv/frame, on OSIRIS's own origin:
+ * A still camera's frame comes from /api/cctv/frame, on MUSASHI X's own origin:
  * the browser will only give up a picture's pixels when it comes from the
  * page's own site or one that allows it, and most camera hosts do not. A live
  * stream's frame is taken from the <video> already playing it.
@@ -76,7 +76,7 @@ const frameUrl = (cameraId: string) => `/api/cctv/frame?id=${encodeURIComponent(
 
 /** A frame fetched ahead of the click that will want it, and when. */
 let early: { id: string; at: number; res: Promise<Response> } | null = null;
-/** Comfortably inside the 4 s that OSIRIS holds a camera's frame. */
+/** Comfortably inside the 4 s that MUSASHI X holds a camera's frame. */
 const EARLY_MS = 3000;
 
 /** Fetches a still camera's frame now, for a grab that is about to ask for it. */
@@ -87,7 +87,7 @@ export function fetchStillEarly(cameraId: string): void {
   early = { id: cameraId, at: Date.now(), res };
 }
 
-/** A still camera's current frame, through OSIRIS. */
+/** A still camera's current frame, through MUSASHI X. */
 export async function grabStill(cameraId: string, signal?: AbortSignal): Promise<Grab> {
   const ready = early?.id === cameraId && Date.now() - early.at < EARLY_MS ? early.res : null;
   early = null;

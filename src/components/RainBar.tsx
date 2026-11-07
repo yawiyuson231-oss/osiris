@@ -8,7 +8,7 @@ import { bracketTime } from '@/lib/wind-layer';
 import { AtCentre, BoxShell, Choice, clock, IconButton, Legend, ResetButton, TextButton, TimeReadout, TimeTrack, Tune } from '@/components/TimeBox';
 
 /**
- * OSIRIS — the Rain layer: RainViewer's radar mosaic, and the small box that
+ * MUSASHI X — the Rain layer: RainViewer's radar mosaic, and the small box that
  * plays its last two hours as a loop.
  *
  * Every frame (one each ten minutes, see /api/rain) is its own raster layer.
@@ -36,7 +36,7 @@ const MAX_LOADING = 2;
 /** After RainViewer refuses a tile, how long to ask only for the newest frame. */
 const BUSY_MS = 60_000;
 const PREFIX = 'rain-radar-';
-const STORE = 'osiris.rain';
+const STORE = 'musashi.rain';
 const ATTRIBUTION = 'Rain: <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>';
 
 /** RainViewer's Universal Blue scale, the only one its free tiles come in, by dBZ. */

@@ -4,7 +4,7 @@ import { extractJson } from '@/lib/oi/parse';
 import { IDENTIFY_SYSTEM, MAX_CROPS, identifyPrompt, parseIdentities } from '@/lib/vision/identify';
 
 /**
- * OSIRIS OI — name the vehicles in a camera frame, on the reader's own key.
+ * MUSASHI X OI — name the vehicles in a camera frame, on the reader's own key.
  *
  * POST /api/oi/identify
  *   headers  X-OI-Provider, X-OI-Key (or Authorization: Bearer), X-OI-Model (optional)
